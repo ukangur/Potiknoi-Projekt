@@ -4,7 +4,7 @@ import java.util.List;
 public class Kaardipakk {
 
     /*Kuidas kasutada:
-            1) Kui tahad kasutada: Kaardipakk()
+            1) Kui tahad kasutada tavalist pakki: Kaardipakk()
             2) Kui tahad kasutada väikest pakki: Kaardipakk("väike")
 
     Kaardipakid saab kätte get-meetoditega:

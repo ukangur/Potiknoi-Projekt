@@ -3,6 +3,17 @@ import java.util.List;
 
 public class Kaardipakk {
 
+    /*Kuidas kasutada:
+            1) Kui tahad kasutada: Kaardipakk()
+            2) Kui tahad kasutada väikest pakki: Kaardipakk("väike")
+
+    Kaardipakid saab kätte get-meetoditega:
+            getKaardipakk()
+            getRisti()
+            getRuutu()
+            getPoti()
+            getÄrtu()*/
+
     private List<Kaart> pakk;
     private String[] tugevused = {"A", "K", "Q", "J", "10", "9", "8", "7", "6", "5", "4", "3", "2"};
     private char[] mastid = {'♣', '♦', '♠', '♥'};
@@ -39,7 +50,7 @@ public class Kaardipakk {
         }
     }
 
-    public List<Kaart> getPakk() {
+    public List<Kaart> getKaardipakk() {
         return pakk;
     }
 

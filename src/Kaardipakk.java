@@ -24,6 +24,10 @@ public class Kaardipakk {
 
     public Kaardipakk() {
         this.pakk = new ArrayList<Kaart>();
+        this.risti = new ArrayList<Kaart>();
+        this.ruutu = new ArrayList<Kaart>();
+        this.poti = new ArrayList<Kaart>();
+        this.ärtu = new ArrayList<Kaart>();
         for (String tugevus: tugevused) {
             this.risti.add(new Kaart(tugevus, mastid[0]));
             this.ruutu.add(new Kaart(tugevus, mastid[1]));
@@ -38,6 +42,10 @@ public class Kaardipakk {
 
     public Kaardipakk(String väike) {
         this.pakk = new ArrayList<Kaart>();
+        this.risti = new ArrayList<Kaart>();
+        this.ruutu = new ArrayList<Kaart>();
+        this.poti = new ArrayList<Kaart>();
+        this.ärtu = new ArrayList<Kaart>();
         for (int i = 0; i < 9; i++) {
             this.risti.add(new Kaart(tugevused[i], mastid[0]));
             this.ruutu.add(new Kaart(tugevused[i], mastid[1]));

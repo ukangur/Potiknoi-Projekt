@@ -20,7 +20,20 @@ public class Mängija {
 
     //setJuurdeAntavadKaardid võtab argumendiks List<Kaart> tüüpi listi, sest tihti võetakse laualt üles rohkem kui 1 kaart.
     //Seega laual olevad kaardid võiksid samuti olla List<Kaart> tüüpi.
-    public void setJuurdeAnravadKaardid(List<Kaart> juurdeAntavad) {
-        this.käesOlevadKaardid.addAll(juurdeAntavad);
+    public void setJuurdeAnravadKaardid(Kaart juurdeAntavad) {
+        this.käesOlevadKaardid.add(juurdeAntavad);
+    }
+
+    //setEemaldaKäestKaart on selleks, et peale käimist kaart käest eemaldada.
+    public void setEemaldaKäestKaart(Kaart kaart) {
+        this.käesOlevadKaardid.remove(kaart);
+    }
+
+    @Override
+    public String toString() {
+        return "Mängija{" +
+                "käesOlevadKaardid=" + käesOlevadKaardid +
+                ", mänigjaNimi='" + mänigjaNimi + '\'' +
+                '}';
     }
 }

@@ -41,4 +41,11 @@ public class TestTrump {
         }
     }
 
+    public void prindiMastid() {
+        System.out.println("Risti pakk: " + risti);
+        System.out.println("Ruutu pakk: " + ruutu);
+        System.out.println("Poti pakk: " + poti);
+        System.out.println("Ärtu pakk: " + ärtu);
+    }
+
 }

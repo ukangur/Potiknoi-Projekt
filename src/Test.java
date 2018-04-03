@@ -16,6 +16,14 @@ public class Test {
         System.out.println(väikePakk.getKaardipakk());
         System.out.println(väikePakk.getÄrtu());
 
+        //Mängija - getKäesOlevadKaardid testimine ja setKäesOlevadKaardid testimine
+        List<Kaart> ristid = väikePakk.getRisti();
+        List<Kaart> potid = väikePakk.getPoti();
+        Mängija mängija1 = new Mängija(ristid);
+        System.out.println("Mängija nr1 käes on: " + mängija1.getKäesOlevadKaardid());
+        mängija1.setKäesOlevadKaardid(potid); //Siin kirjutad set meetod lihtsalt käes olevad kaardid üle.
+        System.out.println("Peale ristide lisamist on mängijal nr1 käes: " + mängija1.getKäesOlevadKaardid());
+
         //Küsimus - MillineKaart testimine
         Küsimus küsimus = new Küsimus();
         List<Kaart> ärtud = väikePakk.getÄrtu();
@@ -26,6 +34,8 @@ public class Test {
         List<String> erinevadKäigud = Arrays.asList("tapa", "saada");
         String millineKäik = küsimus.MillineKäik(erinevadKäigud);
         System.out.println("Valitud käik on " + millineKäik);
+
+
 
     }
 

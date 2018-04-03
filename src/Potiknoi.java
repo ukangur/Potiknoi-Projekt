@@ -38,14 +38,14 @@ public class Potiknoi {
         Laud mäng = new Laud(pakk.get(pakk.size()-1));    //Nüüd on trump valitud
         TestTrump tugevused = new TestTrump();
         tugevused.TrumbiAktiveerimine(pakk.get(pakk.size()-1));
-        System.out.println(pakk.get(pakk.size()-1)); //Testin, et näha trumpi
-        System.out.println(tugevused.pakk); //Testimiseks
+        //System.out.println(pakk.get(pakk.size()-1)); //Testin, et näha trumpi
+        //System.out.println(tugevused.pakk); //Testimiseks
 
         //Lisasin mängijad koos kaartidega ning loosin alustaja
         System.out.println("Sisesta enda nimi: "); //<--- Küsin mängija nime
         Random random = new Random();
         int r = random.nextInt(10) + 1;
-        System.out.println(r);
+        //System.out.println(r);
 
         Mängija inimene = new Mängija(mängija1Kaardid, sc.nextLine(), 0);
         Mängija arvuti = new Mängija(mängija2Kaardid, "BOT", 0);
@@ -57,14 +57,15 @@ public class Potiknoi {
             arvuti.setKasAlustab(1);
         }
 
-
         if (arvuti.getKasAlustab() == 1) {
-            for (int i = pakk.size()-1;i<=0; i--) {
+            for (int i = tugevused.koopia.size()-1; i>=0; i--) {
                 Kaart kaart = tugevused.koopia.get(i);
-                System.out.println(tugevused.koopia);
+                //System.out.println(kaart);
                 if (arvuti.getKäesOlevadKaardid().contains(kaart)) {
+                    System.out.println(arvuti.getKäesOlevadKaardid());
                     mäng.setKaartLauale(kaart);
                     arvuti.setEemaldaKäestKaart(kaart);
+                    System.out.println(tugevused.koopia);
                     break;
                 }
             }

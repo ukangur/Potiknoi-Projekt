@@ -3,14 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3253defc-a0bf-4fe0-ae01-c753790530d3" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/Potiknoi/Mängija.class" afterPath="$PROJECT_DIR$/out/production/Potiknoi/Mängija.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Potiknoi/Potiknoi.class" afterPath="$PROJECT_DIR$/out/production/Potiknoi/Potiknoi.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Potiknoi/Test.class" afterPath="$PROJECT_DIR$/out/production/Potiknoi/Test.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Potiknoi/TestKaks.class" afterPath="$PROJECT_DIR$/out/production/Potiknoi/TestKaks.class" />
-      <change beforePath="$PROJECT_DIR$/src/Mängija.java" afterPath="$PROJECT_DIR$/src/Mängija.java" />
       <change beforePath="$PROJECT_DIR$/src/Potiknoi.java" afterPath="$PROJECT_DIR$/src/Potiknoi.java" />
-      <change beforePath="$PROJECT_DIR$/src/Test.java" afterPath="$PROJECT_DIR$/src/Test.java" />
-      <change beforePath="$PROJECT_DIR$/src/TestKaks.java" afterPath="$PROJECT_DIR$/src/TestKaks.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -126,11 +119,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Potiknoi.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Potiknoi.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Potiknoi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="509">
-              <caret line="71" column="57" lean-forward="false" selection-start-line="71" selection-start-column="57" selection-end-line="71" selection-end-column="57" />
+            <state relative-caret-position="1491">
+              <caret line="71" column="9" lean-forward="true" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
               <folding>
                 <element signature="e#89#90#0" expanded="true" />
                 <element signature="e#116#117#0" expanded="true" />
@@ -139,10 +132,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestTrump.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TestTrump.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TestTrump.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
+            <state relative-caret-position="-462">
               <caret line="12" column="18" lean-forward="true" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
               <folding />
             </state>
@@ -203,7 +196,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="952" />
     <option name="width" value="976" />
     <option name="height" value="1038" />
@@ -465,15 +458,15 @@
       <workItem from="1522737437525" duration="106000" />
       <workItem from="1522749060464" duration="12261000" />
       <workItem from="1522774029118" duration="1218000" />
-      <workItem from="1522777888831" duration="6119000" />
+      <workItem from="1522777888831" duration="7375000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25265000" />
+    <option name="totallyTimeSpent" value="26521000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1071,22 +1064,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestTrump.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="12" column="18" lean-forward="true" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Potiknoi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="71" column="57" lean-forward="false" selection-start-line="71" selection-start-column="57" selection-end-line="71" selection-end-column="57" />
+        <state relative-caret-position="1491">
+          <caret line="71" column="9" lean-forward="true" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
           <folding>
             <element signature="e#89#90#0" expanded="true" />
             <element signature="e#116#117#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestTrump.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-462">
+          <caret line="12" column="18" lean-forward="true" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -34,7 +34,7 @@ public class TestKaks {
         }
 
         //Prindin vahelduseks välja, millised on kaardid käes ja pakis.
-        System.out.println(pakk);
+        System.out.println("See on segatud pakk peale kaartide jagamist: " + pakk);
         System.out.println("Mängija 1 kaardid: " + mängija1Kaardid);
         System.out.println("Mängija 2 kaardid: " + mängija2Kaardid);
 
@@ -73,5 +73,11 @@ public class TestKaks {
         testlaud.setKaartLauale(millineKaart);
         System.out.println("Laual on nüüd kaardid: " + testlaud.getLaualOlevadKaardid());
         System.out.println("Kätte jäid kaardid: " + käes);
+
+        //Siin võtan kaarte juurde
+        while (käes.size() < 6) {
+            testmängija.võtaKaarteJuurde(pakk);
+        }
+        System.out.println("Peale juurde võtmist on käsi: " + käes);
     }
 }

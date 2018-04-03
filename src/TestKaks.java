@@ -43,7 +43,7 @@ public class TestKaks {
         pakk.remove(0);
 
         //Loon esimese ja ainukese mängija testiks.
-        Mängija testmängija = new Mängija(mängija1Kaardid, "Testimees");
+        Mängija testmängija = new Mängija(mängija1Kaardid, "Testimees", 1);
         //Kontrolin, kas on korras sellega.
         System.out.println(testmängija);
 

@@ -4,10 +4,20 @@ public class Mängija {
 
     private List<Kaart> käesOlevadKaardid;
     private String mänigjaNimi;
+    private int kasAlustab=0;
 
-    public Mängija(List<Kaart> käesOlevadKaardid, String mänigjaNimi) {
+    public Mängija(List<Kaart> käesOlevadKaardid, String mänigjaNimi, int kasAlustab) {
         this.käesOlevadKaardid = käesOlevadKaardid;
         this.mänigjaNimi = mänigjaNimi;
+        this.kasAlustab = kasAlustab;
+    }
+
+    public int getKasAlustab() {
+        return kasAlustab;
+    }
+
+    public void setKasAlustab(int kasAlustab) {
+        this.kasAlustab = kasAlustab;
     }
 
     public List<Kaart> getKäesOlevadKaardid() {

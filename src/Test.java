@@ -16,13 +16,15 @@ public class Test {
         System.out.println(väikePakk.getKaardipakk());
         System.out.println(väikePakk.getÄrtu());
 
-        //Mängija - getKäesOlevadKaardid testimine ja setKäesOlevadKaardid testimine
+        //Mängija - getKäesOlevadKaardid testimine ja setKäesOlevadKaardid testimine ning kaartide "korjamine" setJuurdeAnravadKaardid meetodiga.
         List<Kaart> ristid = väikePakk.getRisti();
         List<Kaart> potid = väikePakk.getPoti();
-        Mängija mängija1 = new Mängija(ristid);
-        System.out.println("Mängija nr1 käes on: " + mängija1.getKäesOlevadKaardid());
-        mängija1.setKäesOlevadKaardid(potid); //Siin kirjutad set meetod lihtsalt käes olevad kaardid üle.
-        System.out.println("Peale ristide lisamist on mängijal nr1 käes: " + mängija1.getKäesOlevadKaardid());
+        Mängija mängija1 = new Mängija(ristid, "Erik");
+        List<Kaart> käes = mängija1.getKäesOlevadKaardid();
+        String mängijaNimi = mängija1.getMänigjaNimi();
+        System.out.println("Mängijal " + mängijaNimi + " on käes : " + käes);
+        mängija1.setJuurdeAnravadKaardid(potid);
+        System.out.println("Peale potide lisamist mängijal " + mängijaNimi + " käes: " + käes);
 
         //Küsimus - MillineKaart testimine
         Küsimus küsimus = new Küsimus();

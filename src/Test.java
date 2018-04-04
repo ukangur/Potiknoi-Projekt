@@ -20,7 +20,7 @@ public class Test {
 
         //Mängija - getKäesOlevadKaardid testimine ja kaartide "korjamine" setJuurdeAnravadKaardid meetodiga.
         List<Kaart> ristid = väikePakk.getRisti();
-        Mängija mängija1 = new Mängija(ristid, "Erik", 1);
+        Mängija mängija1 = new Mängija(ristid, "Erik");
         List<Kaart> käes = mängija1.getKäesOlevadKaardid();
         String mängijaNimi = mängija1.getMänigjaNimi();
         System.out.println("Mängijal " + mängijaNimi + " on käes : " + käes);

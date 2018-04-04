@@ -4,10 +4,12 @@ public class Laud {
 
     private Kaart trump;
     private List<Kaart> laualOlevadKaardid;
+    private List<Kaart> tapvadKaardid;
 
     public Laud(Kaart trump) {
         this.trump = trump;
         this.laualOlevadKaardid = new ArrayList<Kaart>();
+        this.tapvadKaardid = new ArrayList<Kaart>();
     }
 
     public List<Kaart> getLaualOlevadKaardid() {
@@ -18,8 +20,24 @@ public class Laud {
         return trump;
     }
 
+    public void teeLaudTühjaks() {
+        this.laualOlevadKaardid = new ArrayList<Kaart>();
+    }
+
+    public void teeTapvadTühjaks() {
+        this.tapvadKaardid = new ArrayList<Kaart>();
+    }
+
     public void setKaartLauale(Kaart käidudKaart) {
         this.laualOlevadKaardid.add(käidudKaart);
+    }
+
+    public void setTapvadKaardid(List<Kaart> käidavKaart) {
+        this.tapvadKaardid.addAll(käidavKaart);
+    }
+
+    public List<Kaart> getTapvadKaardid() {
+        return tapvadKaardid;
     }
 
     @Override

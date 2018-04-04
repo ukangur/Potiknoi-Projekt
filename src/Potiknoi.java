@@ -29,40 +29,132 @@ public class Potiknoi {
         }
 
         //Teen mängulaua
-        Laud mäng = new Laud(pakk.get(pakk.size() - 1));    //Nüüd on trump valitud
-        TrumbiAktiveerimine(pakk.get(pakk.size() - 1));
+        Kaart trump = pakk.get(pakk.size()-1);
+        Laud mäng = new Laud(trump);    //Nüüd on trump valitud
+        TrumbiAktiveerimine(trump);
         //System.out.println(pakk.get(pakk.size()-1)); //Testin, et näha trumpi
         //System.out.println(tugevused.pakk); //Testimiseks
 
-        //Lisasin mängijad koos kaartidega ning loosin alustaja
+        //Lisasin mängijad koos kaartidega
         System.out.println("Sisesta enda nimi: "); //<--- Küsin mängija nime
-        Random random = new Random();
-        int r = random.nextInt(10) + 1;
-        //System.out.println(r);
+        Mängija inimene = new Mängija(mängija1Kaardid, sc.nextLine());
+        Mängija arvuti = new Mängija(mängija2Kaardid, "BOT");
 
-        Mängija inimene = new Mängija(mängija1Kaardid, sc.nextLine(), 0);
-        Mängija arvuti = new Mängija(mängija2Kaardid, "BOT", 0);
+        Küsimus küsimus = new Küsimus();
+        List<Kaart> inimeseKäes = inimene.getKäesOlevadKaardid();
+        List<Kaart> arvutiKäes = arvuti.getKäesOlevadKaardid();
+        String inimeseNimi = inimene.getMänigjaNimi();
+        List<Kaart> laualOlevadKaardid = mäng.getLaualOlevadKaardid();
+        int kesKäib = 1; //Kui on 1, käib inimene, kui 0, siis arvuti
 
-        if (r % 2 == 0) {
-            inimene.setKasAlustab(1);
-        } else {
-            arvuti.setKasAlustab(1);
+        System.out.println(inimeseKäes);
+        System.out.println(arvutiKäes);
+        System.out.println(trump);
+
+        while (true) {
+            if (pakk.size() > 0 && (inimeseKäes.size() > 0 && arvutiKäes.size() > 0)) {
+
+                //Kui on inimese kord käia, siis kesKäib == 1
+                if (kesKäib == 1) {
+                    Kaart millineKaart = küsimus.MillineKaart(inimeseKäes);
+                    mäng.setKaartLauale(millineKaart);
+                    System.out.println(inimeseNimi + " käib kaardi: " + millineKaart);
+                    inimene.setEemaldaKäestKaart(millineKaart);
+                    System.out.println(laualOlevadKaardid);
+                    List<String> erinevadKäigud = Arrays.asList("käi juurde", "anna edasi");
+                    String millineKäik = küsimus.MillineKäik(erinevadKäigud);
+                    while (millineKäik == "käi juurde") {
+                        millineKaart = küsimus.MillineKaart(inimeseKäes);
+                        mäng.setKaartLauale(millineKaart);
+                        System.out.println(inimeseNimi + " käib kaardi: " + millineKaart);
+                        inimene.setEemaldaKäestKaart(millineKaart);
+                        System.out.println(laualOlevadKaardid);
+                        millineKäik = küsimus.MillineKäik(erinevadKäigud);
+                    }
+
+                    //Siin hakkab arvuti tapma. Kui arvuti korjab, siis kesKäib = 1 ehk inimene käib uuesti.
+                    for (Kaart tapetav : laualOlevadKaardid) {
+                        System.out.println(tapetav);
+                        List<Kaart> tappevKaart = Tapa(tapetav, arvutiKäes);
+                        if (tappevKaart.size() > 0) {
+                            mäng.setTapvadKaardid(tappevKaart);
+                            arvuti.setEemaldaKäestKaart(tappevKaart.get(0));
+                            kesKäib = 0;
+                            //System.out.println(arvutiKäes);
+                        }
+                        else {
+                            kesKäib = 1;
+                        }
+                    }
+                    if (kesKäib == 1) { //Ehk arvuti korjas, sest uuesti on inimese kord. Seega peab kaardid üles võtma.
+                        arvuti.võtaÜles(mäng.getLaualOlevadKaardid());
+                        arvuti.võtaÜles(mäng.getTapvadKaardid());
+                    }
+
+                    while (inimeseKäes.size()<6) {
+                        inimene.võtaKaarteJuurde(pakk);
+                    }
+                    while (arvutiKäes.size()<6) {
+                        arvuti.võtaKaarteJuurde(pakk);
+                    }
+                    System.out.println(inimeseKäes);
+                    System.out.println(arvutiKäes);
+                    System.out.println("Tihi on mängitud!");
+                    //Teen laua ja tapvad kaardid tühjaks.
+                    mäng.teeTapvadTühjaks();
+                    mäng.teeLaudTühjaks();
+                    System.out.println(mäng.getTapvadKaardid());
+                    System.out.println(mäng.getLaualOlevadKaardid());
+                    }
+                }
+
+            else {
+                break;
+            }
+        }
+    }
+
+    // Meetod, millega arvuti kaarte tappa saab. Sisestada tuleb tapetav kaart ja käes olevad kaardid.
+    // Tagastatakse üheelemendiline list, mille sees on kaart, millega saab tappa või tühi list kui tappa ei saa.
+    // Klass kasutab liste risti, ruutu, poti ärtu
+    public List<Kaart> Tapa(Kaart tapetav, List<Kaart> käesOlevadKaardid) {
+        List<Kaart> vastus = new ArrayList<>();
+        List<Kaart> kasutatavPakk = new ArrayList<>();
+        char mast = tapetav.getMast();
+        if (mast == '♣') {
+            kasutatavPakk.addAll(risti);
+        }
+        else if (mast == '♦') {
+            kasutatavPakk.addAll(ruutu);
+        }
+        else if (mast == '♠') {
+            kasutatavPakk.addAll(poti);
+        }
+        else if (mast == '♥') {
+            kasutatavPakk.addAll(ärtu);
         }
 
-        //Kui arvuti valitakse alustajaks, siis ta käib enda kõige nõrgema kaardi
-        if (arvuti.getKasAlustab() == 1) {
-            for (int i = koopia.size() - 1; i >= 0; i--) {
-                Kaart kaart = koopia.get(i);
-                if (arvuti.getKäesOlevadKaardid().contains(kaart)) {
-                    mäng.setKaartLauale(kaart);
-                    arvuti.setEemaldaKäestKaart(kaart);
-                    System.out.println(arvuti.getKäesOlevadKaardid());
-                    System.out.println(koopia);
-                    break;
+        for(int i = kasutatavPakk.size() - 1; i >= 0; i--) {
+            if (i < kasutatavPakk.indexOf(tapetav)) {
+                if (käesOlevadKaardid.contains(kasutatavPakk.get(i))) {
+                    vastus.add(kasutatavPakk.get(i));
+                    return vastus;
                 }
             }
         }
-        System.out.println(mäng.getLaualOlevadKaardid());
+        return vastus;
+    }
+
+    // Meetod, millega arvuti käib alati kõige nõrgema kaardi. Sisestatakse arvuti käes olevate kaartide list.
+    // Tagastatakse kaart, mille arvuti käib
+    // Meetod kasutab tugevuslisti nimega koopia
+    public Kaart Käi(List<Kaart> käesOlevadKaardid) {
+        for(int i = koopia.size() - 1; i >= 0; i--) {
+            if (käesOlevadKaardid.contains(koopia.get(i))) {
+                return koopia.get(i);
+            }
+        }
+        return käesOlevadKaardid.get(0); // Seda return'i kunagi ei kasutata, aga selle peab siia panema, muidu pole võimalik meetodit kirja panna
     }
 
     public void TrumbiAktiveerimine(Kaart trump) {

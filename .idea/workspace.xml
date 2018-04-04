@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3253defc-a0bf-4fe0-ae01-c753790530d3" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/Potiknoi/Küsimus.class" afterPath="$PROJECT_DIR$/out/production/Potiknoi/Küsimus.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Potiknoi/Potiknoi.class" afterPath="$PROJECT_DIR$/out/production/Potiknoi/Potiknoi.class" />
+      <change beforePath="$PROJECT_DIR$/src/Kaart.java" afterPath="$PROJECT_DIR$/src/Kaart.java" />
       <change beforePath="$PROJECT_DIR$/src/Potiknoi.java" afterPath="$PROJECT_DIR$/src/Potiknoi.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -67,8 +65,8 @@
       <file leaf-file-name="Kaart.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Kaart.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+            <state relative-caret-position="558">
+              <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -109,7 +107,7 @@
       <file leaf-file-name="Küsimus.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Küsimus.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="565">
+            <state relative-caret-position="1510">
               <caret line="74" column="5" lean-forward="false" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
               <folding />
             </state>
@@ -119,8 +117,8 @@
       <file leaf-file-name="Potiknoi.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Potiknoi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="567">
-              <caret line="33" column="124" lean-forward="false" selection-start-line="33" selection-start-column="124" selection-end-line="33" selection-end-column="124" />
+            <state relative-caret-position="7518">
+              <caret line="358" column="26" lean-forward="false" selection-start-line="358" selection-start-column="26" selection-end-line="358" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -129,8 +127,8 @@
       <file leaf-file-name="TestTrump.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TestTrump.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1457">
-              <caret line="125" column="5" lean-forward="true" selection-start-line="72" selection-start-column="4" selection-end-line="125" selection-end-column="5" />
+            <state relative-caret-position="-1155">
+              <caret line="76" column="59" lean-forward="true" selection-start-line="76" selection-start-column="59" selection-end-line="76" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -186,6 +184,7 @@
         <option value="$PROJECT_DIR$/src/TrumbiKoopia.java" />
         <option value="$PROJECT_DIR$/src/Testklass.java" />
         <option value="$PROJECT_DIR$/src/Küsimus.java" />
+        <option value="$PROJECT_DIR$/src/Kaart.java" />
         <option value="$PROJECT_DIR$/src/Potiknoi.java" />
       </list>
     </option>
@@ -476,16 +475,15 @@
       <workItem from="1522774029118" duration="1218000" />
       <workItem from="1522777888831" duration="9490000" />
       <workItem from="1522816854418" duration="26173000" />
-      <workItem from="1522859668212" duration="9735000" />
+      <workItem from="1522859668212" duration="10702000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64544000" />
+    <option name="totallyTimeSpent" value="65511000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -496,7 +494,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08232711" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5082327" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -958,14 +956,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Kaart.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="798">
@@ -1048,26 +1038,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestTrump.java">
+    <entry file="file://$PROJECT_DIR$/src/Kaart.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1457">
-          <caret line="125" column="5" lean-forward="true" selection-start-line="72" selection-start-column="4" selection-end-line="125" selection-end-column="5" />
+        <state relative-caret-position="558">
+          <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Küsimus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="565">
+        <state relative-caret-position="1510">
           <caret line="74" column="5" lean-forward="false" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestTrump.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1155">
+          <caret line="76" column="59" lean-forward="true" selection-start-line="76" selection-start-column="59" selection-end-line="76" selection-end-column="59" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Potiknoi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="33" column="124" lean-forward="false" selection-start-line="33" selection-start-column="124" selection-end-line="33" selection-end-column="124" />
+        <state relative-caret-position="7518">
+          <caret line="358" column="26" lean-forward="false" selection-start-line="358" selection-start-column="26" selection-end-line="358" selection-end-column="26" />
           <folding />
         </state>
       </provider>

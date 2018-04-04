@@ -58,7 +58,7 @@ public class Kaart {
 
     @Override
     public String toString() {
-        return tugevus + sümbol;
+        return sümbol + tugevus;
     }
 
 }

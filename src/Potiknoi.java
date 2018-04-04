@@ -47,29 +47,36 @@ public class Potiknoi {
         List<Kaart> laualOlevadKaardid = mäng.getLaualOlevadKaardid();
         int kesKäib = 1; //Kui on 1, käib inimene, kui 0, siis arvuti
 
-        System.out.println(inimeseKäes);
-        System.out.println(arvutiKäes);
-        System.out.println(trump);
+        System.out.println(inimeseKäes + "-MINA");
+        System.out.println(arvutiKäes + "-BOT");
+        System.out.println(trump + "-TRUMP");
 
         while (true) {
             if (pakk.size() > 0 && (inimeseKäes.size() > 0 && arvutiKäes.size() > 0)) {
 
                 //Kui on inimese kord käia, siis kesKäib == 1
                 if (kesKäib == 1) {
+                    System.out.println("Mängukord on mängija " + inimeseNimi + " käes.");
                     Kaart millineKaart = küsimus.MillineKaart(inimeseKäes);
                     mäng.setKaartLauale(millineKaart);
                     System.out.println(inimeseNimi + " käib kaardi: " + millineKaart);
-                    inimene.setEemaldaKäestKaart(millineKaart);
+                    inimene.eemaldaKäestKaart(millineKaart);
                     System.out.println(laualOlevadKaardid);
                     List<String> erinevadKäigud = Arrays.asList("käi juurde", "anna edasi");
                     String millineKäik = küsimus.MillineKäik(erinevadKäigud);
                     while (millineKäik == "käi juurde") {
                         millineKaart = küsimus.MillineKaart(inimeseKäes);
-                        mäng.setKaartLauale(millineKaart);
-                        System.out.println(inimeseNimi + " käib kaardi: " + millineKaart);
-                        inimene.setEemaldaKäestKaart(millineKaart);
-                        System.out.println(laualOlevadKaardid);
-                        millineKäik = küsimus.MillineKäik(erinevadKäigud);
+                        if (laualOlevadKaardid.size() > 0 && millineKaart.getTugevus() == laualOlevadKaardid.get(0).getTugevus()) {
+                            mäng.setKaartLauale(millineKaart);
+                            System.out.println(inimeseNimi + " käib kaardi: " + millineKaart);
+                            inimene.eemaldaKäestKaart(millineKaart);
+                            System.out.println(laualOlevadKaardid);
+                            millineKäik = küsimus.MillineKäik(erinevadKäigud);
+                        }
+                        else {
+                            System.out.println("Seda kaarti ei saa lisada!");
+                            millineKäik = küsimus.MillineKäik(erinevadKäigud);
+                        }
                     }
 
                     //Siin hakkab arvuti tapma. Kui arvuti korjab, siis kesKäib = 1 ehk inimene käib uuesti.
@@ -78,17 +85,15 @@ public class Potiknoi {
                         List<Kaart> tappevKaart = Tapa(tapetav, arvutiKäes);
                         if (tappevKaart.size() > 0) {
                             mäng.setTapvadKaardid(tappevKaart);
-                            arvuti.setEemaldaKäestKaart(tappevKaart.get(0));
-                            kesKäib = 0;
+                            arvuti.eemaldaKäestKaart(tappevKaart.get(0));
+                            kesKäib = 1;  //Tegelikult peab siin "0" olema, aga testimse ajal olgu "1"
                             //System.out.println(arvutiKäes);
                         }
                         else {
+                            arvuti.võtaÜles(mäng.getLaualOlevadKaardid());
+                            arvuti.võtaÜles(mäng.getTapvadKaardid());
                             kesKäib = 1;
                         }
-                    }
-                    if (kesKäib == 1) { //Ehk arvuti korjas, sest uuesti on inimese kord. Seega peab kaardid üles võtma.
-                        arvuti.võtaÜles(mäng.getLaualOlevadKaardid());
-                        arvuti.võtaÜles(mäng.getTapvadKaardid());
                     }
 
                     while (inimeseKäes.size()<6) {
@@ -105,8 +110,9 @@ public class Potiknoi {
                     mäng.teeLaudTühjaks();
                     System.out.println(mäng.getTapvadKaardid());
                     System.out.println(mäng.getLaualOlevadKaardid());
-                    }
+
                 }
+            }
 
             else {
                 break;
@@ -137,6 +143,34 @@ public class Potiknoi {
         for(int i = kasutatavPakk.size() - 1; i >= 0; i--) {
             if (i < kasutatavPakk.indexOf(tapetav)) {
                 if (käesOlevadKaardid.contains(kasutatavPakk.get(i))) {
+                    vastus.add(kasutatavPakk.get(i));
+                    return vastus;
+                }
+            }
+        }
+        return vastus;
+    }
+
+    public List<Kaart> mängijaTapab(Kaart tapetav, Kaart käesOlevKaart) {
+        List<Kaart> vastus = new ArrayList<>();
+        List<Kaart> kasutatavPakk = new ArrayList<>();
+        char mast = tapetav.getMast();
+        if (mast == '♣') {
+            kasutatavPakk.addAll(risti);
+        }
+        else if (mast == '♦') {
+            kasutatavPakk.addAll(ruutu);
+        }
+        else if (mast == '♠') {
+            kasutatavPakk.addAll(poti);
+        }
+        else if (mast == '♥') {
+            kasutatavPakk.addAll(ärtu);
+        }
+
+        for(int i = kasutatavPakk.size() - 1; i >= 0; i--) {
+            if (i < kasutatavPakk.indexOf(tapetav)) {
+                if (käesOlevKaart==kasutatavPakk.get(i)) {
                     vastus.add(kasutatavPakk.get(i));
                     return vastus;
                 }

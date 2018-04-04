@@ -58,7 +58,7 @@ public class TestKaks {
         Kaart millineKaart = küsimus.MillineKaart(käes);
         testlaud.setKaartLauale(millineKaart);
         System.out.println(mängijaNimi + " käib kaardi: " + millineKaart);
-        testmängija.setEemaldaKäestKaart(millineKaart);
+        testmängija.eemaldaKäestKaart(millineKaart);
         System.out.println("Laual on nüüd kaardid: " + testlaud.getLaualOlevadKaardid());
         System.out.println("Kätte jäid kaardid: " + käes);
 
@@ -69,7 +69,7 @@ public class TestKaks {
 
         millineKaart = küsimus.MillineKaart(käes);
         System.out.println(mängijaNimi + " käib kaardi: " + millineKaart);
-        testmängija.setEemaldaKäestKaart(millineKaart);
+        testmängija.eemaldaKäestKaart(millineKaart);
         testlaud.setKaartLauale(millineKaart);
         System.out.println("Laual on nüüd kaardid: " + testlaud.getLaualOlevadKaardid());
         System.out.println("Kätte jäid kaardid: " + käes);

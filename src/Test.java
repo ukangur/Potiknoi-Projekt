@@ -32,7 +32,7 @@ public class Test {
         System.out.println("Trump on: " + mäng1.getTrump());
         mäng1.setKaartLauale(käes.get(1));
         System.out.println(mängijaNimi + " käib kaardi: " + käes.get(1));
-        mängija1.setEemaldaKäestKaart(käes.get(1));
+        mängija1.eemaldaKäestKaart(käes.get(1));
         System.out.println("Laual on nüüd kaardid: " + mäng1.getLaualOlevadKaardid());
         System.out.println("Kätte jäid kaardid: " + käes);
 

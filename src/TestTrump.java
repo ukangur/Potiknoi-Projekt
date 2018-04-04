@@ -100,6 +100,34 @@ public class TestTrump {
         return vastus;
     }
 
+    public List<Kaart> mängijaTapab(Kaart tapetav, Kaart käesOlevKaart) {
+        List<Kaart> vastus = new ArrayList<>();
+        List<Kaart> kasutatavPakk = new ArrayList<>();
+        char mast = tapetav.getMast();
+        if (mast == '♣') {
+            kasutatavPakk.addAll(risti);
+        }
+        else if (mast == '♦') {
+            kasutatavPakk.addAll(ruutu);
+        }
+        else if (mast == '♠') {
+            kasutatavPakk.addAll(poti);
+        }
+        else if (mast == '♥') {
+            kasutatavPakk.addAll(ärtu);
+        }
+
+        for(int i = kasutatavPakk.size() - 1; i >= 0; i--) {
+            if (i < kasutatavPakk.indexOf(tapetav)) {
+                if (käesOlevKaart==kasutatavPakk.get(i)) {
+                    vastus.add(kasutatavPakk.get(i));
+                    return vastus;
+                }
+            }
+        }
+        return vastus;
+    }
+
     // Meetod, millega arvuti käib alati kõige nõrgema kaardi. Sisestatakse arvuti käes olevate kaartide list.
     // Tagastatakse kaart, mille arvuti käib
     // Meetod kasutab tugevuslisti nimega koopia

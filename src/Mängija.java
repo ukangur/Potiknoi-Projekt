@@ -25,7 +25,7 @@ public class Mängija {
     }
 
     //setEemaldaKäestKaart on selleks, et peale käimist kaart käest eemaldada.
-    public void setEemaldaKäestKaart(Kaart kaart) {
+    public void eemaldaKäestKaart(Kaart kaart) {
         this.käesOlevadKaardid.remove(kaart);
     }
 

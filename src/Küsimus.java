@@ -5,6 +5,9 @@ public class Küsimus {
 
     private Scanner sc = new Scanner(System.in);
 
+    // Sisestatakse kaartide list ja meetod annab igale kaardile järjekorra numbri
+    // Siis küsitakse mängijalt, millist kaarti ta nendest sooib kasutada ja valiku numbri
+    // Tagastatakse kaart, mille mängija valis
     public Kaart MillineKaart(List<Kaart> kaardid) {
         String küsimus = "Millist kaarti soovid käia?\n   Valikud:";
         for (int i = 1; i <= kaardid.size(); i++) {
@@ -27,6 +30,9 @@ public class Küsimus {
         }
     }
 
+    // Sisestatakse sõnede list ja meetod annab igale sõnele järjekorra numbri
+    // Siis küsitakse mängijalt, millist käiku ta soovib teha
+    // Tagastatakse mängija valitud käik (sõnena)
     public String MillineKäik(List<String> käigud) {
         String küsimus = "Kas soovid:";
         for (int i = 1; i <= käigud.size(); i++) {
@@ -50,8 +56,9 @@ public class Küsimus {
     }
 
 
-    // Saad kasutada sellega: küsimus.MillineTase(Arrays.asList("lihtne", "keskmine"));
-    // Pead Potiknoi klassis vaatama if lausetega, kas on "lihtne" (1) või "keskmine" (2)
+    // Sisestatakse sõnede list ja meetod annab igale sõnele järjekorra numbri
+    // Siis küsitakse mängijalt, millist taset ta soovib
+    // Tagastatakse mängija valitud tase (sõnena)
     public String MillineTase(List<String> tase) {
         String küsimus = "Millise raskustasemega soovid mängida:";
         for (int i = 1; i <= tase.size(); i++) {
@@ -74,9 +81,10 @@ public class Küsimus {
         }
     }
 
+    // Küsitakse mängija nime kuni mängija oma nime kirjutab
+    // Tagastatakse mängija sisestatud nimi
     public String Nimi() {
         String vastus = "";
-
         while(vastus.length() == 0) {
             System.out.println("Sisesta enda nimi: ");
             if (sc.hasNextLine()) {

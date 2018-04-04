@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class TestTrump {
 
@@ -100,7 +101,19 @@ public class TestTrump {
         return vastus;
     }
 
-    public List<Kaart> mängijaTapab(Kaart tapetav, Kaart käesOlevKaart) {
+    // Meetod, millega arvuti käib alati kõige nõrgema kaardi. Sisestatakse arvuti käes olevate kaartide list.
+    // Tagastatakse kaart, mille arvuti käib
+    // Meetod kasutab tugevuslisti nimega koopia
+    public Kaart Käi(List<Kaart> käesOlevadKaardid) {
+        for(int i = koopia.size() - 1; i >= 0; i--) {
+            if (käesOlevadKaardid.contains(koopia.get(i))) {
+                return koopia.get(i);
+            }
+        }
+        return käesOlevadKaardid.get(0); // Seda return'i kunagi ei kasutata, aga selle peab siia panema, muidu pole võimalik meetodit kirja panna
+    }
+
+    public List<Kaart> MängijaTapab(Kaart tapetav, List<Kaart> MängijakäesOlevadKaardid) {
         List<Kaart> vastus = new ArrayList<>();
         List<Kaart> kasutatavPakk = new ArrayList<>();
         char mast = tapetav.getMast();
@@ -119,25 +132,60 @@ public class TestTrump {
 
         for(int i = kasutatavPakk.size() - 1; i >= 0; i--) {
             if (i < kasutatavPakk.indexOf(tapetav)) {
-                if (käesOlevKaart==kasutatavPakk.get(i)) {
+                if (MängijakäesOlevadKaardid.contains(kasutatavPakk.get(i))) {
                     vastus.add(kasutatavPakk.get(i));
-                    return vastus;
                 }
             }
         }
         return vastus;
     }
 
-    // Meetod, millega arvuti käib alati kõige nõrgema kaardi. Sisestatakse arvuti käes olevate kaartide list.
-    // Tagastatakse kaart, mille arvuti käib
-    // Meetod kasutab tugevuslisti nimega koopia
-    public Kaart Käi(List<Kaart> käesOlevadKaardid) {
-        for(int i = koopia.size() - 1; i >= 0; i--) {
-            if (käesOlevadKaardid.contains(koopia.get(i))) {
-                return koopia.get(i);
+    // Arvuti tapab suvalise kaardiga, millega on võimalik tappa
+    // Meetod tagastab üheelemendilise listi, mille sees on kaart, millega arvuti tahab tappa
+    public List<Kaart> TapaRandom(Kaart tapetav, List<Kaart> käesOlevadKaardid) {
+        List<Kaart> võimalikudVastused = new ArrayList<>();
+        List<Kaart> vastus = new ArrayList<>();
+        List<Kaart> kasutatavPakk = new ArrayList<>();
+        char mast = tapetav.getMast();
+        if (mast == '♣') {
+            kasutatavPakk.addAll(risti);
+        }
+        else if (mast == '♦') {
+            kasutatavPakk.addAll(ruutu);
+        }
+        else if (mast == '♠') {
+            kasutatavPakk.addAll(poti);
+        }
+        else if (mast == '♥') {
+            kasutatavPakk.addAll(ärtu);
+        }
+
+        for(int i = kasutatavPakk.size() - 1; i >= 0; i--) {
+            if (i < kasutatavPakk.indexOf(tapetav)) {
+                if (käesOlevadKaardid.contains(kasutatavPakk.get(i))) {
+                    võimalikudVastused.add(kasutatavPakk.get(i));
+                }
             }
         }
-        return käesOlevadKaardid.get(0); // Seda return'i kunagi ei kasutata, aga selle peab siia panema, muidu pole võimalik meetodit kirja panna
+
+        if (võimalikudVastused.size() == 0) {
+            return vastus;
+        }
+
+        Random rand = new Random();
+        int suvalineArv = rand.nextInt(võimalikudVastused.size());
+        vastus.add(võimalikudVastused.get(suvalineArv));
+
+        return vastus;
+    }
+
+    // Arvuti käib suvalise kaardi.
+    // Meetod tagastab suvalise kaardi mängija käes olevatest kaartidest
+    public Kaart KäiRandom(List<Kaart> käesOlevadKaardid) {
+        Random rand = new Random();
+        int suvalineArv = rand.nextInt(käesOlevadKaardid.size());
+
+        return käesOlevadKaardid.get(suvalineArv);
     }
 
 

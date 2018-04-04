@@ -48,4 +48,31 @@ public class Küsimus {
             }
         }
     }
+
+
+    // Saad kasutada sellega: küsimus.MillineTase(Arrays.asList("lihtne", "keskmine"));
+    // Pead Potiknoi klassis vaatama if lausetega, kas on "lihtne" (1) või "keskmine" (2)
+    public String MillineTase(List<String> tase) {
+        String küsimus = "Millise raskustasemega soovi mängida:";
+        for (int i = 1; i <= tase.size(); i++) {
+            küsimus += " " + i + "." + tase.get(i - 1);
+        }
+        küsimus += "\nSisesta valiku number!";
+        System.out.println(küsimus);
+
+        for (; ; ) {
+            if (sc.hasNextLine()) {
+                String vastus = sc.nextLine();
+                try {
+                    int valitud = Integer.parseInt(vastus);
+                    return tase.get(valitud - 1);
+                }
+                catch (Exception e) {
+                    System.out.println("Polnud valiku number, sisesta vastus uuesti!");
+                }
+            }
+        }
+    }
+
+
 }

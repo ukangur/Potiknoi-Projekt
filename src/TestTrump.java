@@ -73,7 +73,8 @@ public class TestTrump {
     // Meetod, millega arvuti kaarte tappa saab. Sisestada tuleb tapetav kaart ja käes olevad kaardid.
     // Tagastatakse üheelemendiline list, mille sees on kaart, millega saab tappa või tühi list kui tappa ei saa.
     // Klass kasutab liste risti, ruutu, poti ärtu
-    public List<Kaart> Tapa(Kaart tapetav, List<Kaart> käesOlevadKaardid) {
+    public List<Kaart> Tapa(Kaart tapetav, List<Kaart> käesOlevadKaardid, int tase) {
+        List<Kaart> võimalikudVastused = new ArrayList<>();
         List<Kaart> vastus = new ArrayList<>();
         List<Kaart> kasutatavPakk = new ArrayList<>();
         char mast = tapetav.getMast();
@@ -90,13 +91,36 @@ public class TestTrump {
             kasutatavPakk.addAll(ärtu);
         }
 
-        for(int i = kasutatavPakk.size() - 1; i >= 0; i--) {
-            if (i < kasutatavPakk.indexOf(tapetav)) {
-                if (käesOlevadKaardid.contains(kasutatavPakk.get(i))) {
-                    vastus.add(kasutatavPakk.get(i));
-                    return vastus;
+        if (tase == 2) {
+            for(int i = kasutatavPakk.size() - 1; i >= 0; i--) {
+                if (i < kasutatavPakk.indexOf(tapetav)) {
+                    if (käesOlevadKaardid.contains(kasutatavPakk.get(i))) {
+                        vastus.add(kasutatavPakk.get(i));
+                        return vastus;
+                    }
                 }
             }
+            return vastus;
+        }
+
+        else if (tase == 1) {
+            for(int i = kasutatavPakk.size() - 1; i >= 0; i--) {
+                if (i < kasutatavPakk.indexOf(tapetav)) {
+                    if (käesOlevadKaardid.contains(kasutatavPakk.get(i))) {
+                        võimalikudVastused.add(kasutatavPakk.get(i));
+                    }
+                }
+            }
+
+            if (võimalikudVastused.size() == 0) {
+                return vastus;
+            }
+
+            Random rand = new Random();
+            int suvalineArv = rand.nextInt(võimalikudVastused.size());
+            vastus.add(võimalikudVastused.get(suvalineArv));
+
+            return vastus;
         }
         return vastus;
     }
@@ -104,11 +128,19 @@ public class TestTrump {
     // Meetod, millega arvuti käib alati kõige nõrgema kaardi. Sisestatakse arvuti käes olevate kaartide list.
     // Tagastatakse kaart, mille arvuti käib
     // Meetod kasutab tugevuslisti nimega koopia
-    public Kaart Käi(List<Kaart> käesOlevadKaardid) {
-        for(int i = koopia.size() - 1; i >= 0; i--) {
-            if (käesOlevadKaardid.contains(koopia.get(i))) {
-                return koopia.get(i);
+    public Kaart Käi(List<Kaart> käesOlevadKaardid, int tase) {
+        if (tase == 2) {
+            for(int i = koopia.size() - 1; i >= 0; i--) {
+                if (käesOlevadKaardid.contains(koopia.get(i))) {
+                    return koopia.get(i);
+                }
             }
+        }
+        else if (tase == 1) {
+            Random rand = new Random();
+            int suvalineArv = rand.nextInt(käesOlevadKaardid.size());
+
+            return käesOlevadKaardid.get(suvalineArv);
         }
         return käesOlevadKaardid.get(0); // Seda return'i kunagi ei kasutata, aga selle peab siia panema, muidu pole võimalik meetodit kirja panna
     }

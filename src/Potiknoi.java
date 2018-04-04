@@ -31,10 +31,8 @@ public class Potiknoi {
 
         //Teen mängulaua
         Kaart trump = TrumbiKoopia(pakk.get(pakk.size()-1));
-        Laud mäng = new Laud(trump);    //Nüüd on trump valitud
+        Laud mäng = new Laud(trump);    //Nüüd on trump valitud ja sellest tehtud koopia, sest kaardipakk saab millalgi otsa
         TrumbiAktiveerimine(trump);
-        //System.out.println(pakk.get(pakk.size()-1)); //Testin, et näha trumpi
-        //System.out.println(tugevused.pakk); //Testimiseks
 
         //Küsin raskusastet
         Küsimus küsimus = new Küsimus();
@@ -48,13 +46,12 @@ public class Potiknoi {
             tase = 2;
         }
 
-
         //Lisasin mängijad koos kaartidega
         System.out.println("Sisesta enda nimi: "); //<--- Küsin mängija nime
         Mängija inimene = new Mängija(mängija1Kaardid, sc.nextLine());
         Mängija arvuti = new Mängija(mängija2Kaardid, "BOT");
 
-
+        //Lisan inimesele ja arvutile kaardid
         List<Kaart> inimeseKäes = inimene.getKäesOlevadKaardid();
         List<Kaart> arvutiKäes = arvuti.getKäesOlevadKaardid();
         String inimeseNimi = inimene.getMänigjaNimi();
@@ -73,23 +70,23 @@ public class Potiknoi {
                 if (kesKäib == 1) {
                     System.out.println("Mängukord on mängija " + inimeseNimi + " käes.");
                     System.out.println("Trump on " + trump);
-                    Kaart millineKaart = küsimus.MillineKaart(inimeseKäes);
-                    mäng.setKaartLauale(millineKaart);
+                    Kaart millineKaart = küsimus.MillineKaart(inimeseKäes);    //Küsin mängijalt, mis kaardi ta käib.
+                    mäng.setKaartLauale(millineKaart);                         //Lisan selle kaardi lauale.
                     System.out.println(inimeseNimi + " käib kaardi: " + millineKaart);
-                    inimene.eemaldaKäestKaart(millineKaart);
-                    System.out.println(laualOlevadKaardid);
-                    List<String> erinevadKäigud = Arrays.asList("käi juurde", "anna edasi");
+                    inimene.eemaldaKäestKaart(millineKaart);                   //Võtan selle kaardi käest ära.
+                    System.out.println(laualOlevadKaardid);                    //Prindin kaardid välja.
+                    List<String> erinevadKäigud = Arrays.asList("käi juurde", "anna edasi");  //Küsin, mida mängija edasi tahab teha.
                     String millineKäik = küsimus.MillineKäik(erinevadKäigud);
                     while (millineKäik == "käi juurde") {
                         millineKaart = küsimus.MillineKaart(inimeseKäes);
-                        if (laualOlevadKaardid.size() > 0 && millineKaart.getTugevus() == laualOlevadKaardid.get(0).getTugevus()) {
-                            mäng.setKaartLauale(millineKaart);
+                        if (laualOlevadKaardid.size() > 0 && millineKaart.getTugevus() == laualOlevadKaardid.get(0).getTugevus()) { //Kontrollin, kas kaart sobib
+                            mäng.setKaartLauale(millineKaart);                                                 //ehk kas laual on sama tugevusega (mitte mastiga) kaart
                             System.out.println(inimeseNimi + " käib kaardi: " + millineKaart);
                             inimene.eemaldaKäestKaart(millineKaart);
                             System.out.println(laualOlevadKaardid + "<-- Hetkel mängus olevad kaardid");
                             millineKäik = küsimus.MillineKäik(erinevadKäigud);
                         } else {
-                            System.out.println("Seda kaarti ei saa lisada!");
+                            System.out.println("Seda kaarti ei saa lisada!");  //Kui kaarti ei saa lisada, siis küsin uuesti, mdia mängija soovib teha
                             millineKäik = küsimus.MillineKäik(erinevadKäigud);
                         }
                     }

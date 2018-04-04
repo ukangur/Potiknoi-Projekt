@@ -196,6 +196,12 @@ public class Potiknoi {
             }
             else {
                 System.out.println("Mäng on läbi!!! Keegi võitis ja keegi kaotas, aga hasartmängus mehed ei nuta!");
+                if (arvutiKäes.size() == 0) {
+                    System.out.println("BOT on võitja!");
+                }
+                else {
+                    System.out.println(inimeseNimi + " on võitja!");
+                }
                 break;
             }
         }

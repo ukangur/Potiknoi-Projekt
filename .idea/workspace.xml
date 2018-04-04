@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3253defc-a0bf-4fe0-ae01-c753790530d3" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/TrumbiKoopia.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/Potiknoi/Küsimus.class" afterPath="$PROJECT_DIR$/out/production/Potiknoi/Küsimus.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Potiknoi/Potiknoi.class" afterPath="$PROJECT_DIR$/out/production/Potiknoi/Potiknoi.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Potiknoi/TestTrump.class" afterPath="$PROJECT_DIR$/out/production/Potiknoi/TestTrump.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Potiknoi/Testklass.class" afterPath="$PROJECT_DIR$/out/production/Potiknoi/Testklass.class" />
-      <change beforePath="$PROJECT_DIR$/src/Küsimus.java" afterPath="$PROJECT_DIR$/src/Küsimus.java" />
       <change beforePath="$PROJECT_DIR$/src/Potiknoi.java" afterPath="$PROJECT_DIR$/src/Potiknoi.java" />
-      <change beforePath="$PROJECT_DIR$/src/Testklass.java" afterPath="$PROJECT_DIR$/src/Testklass.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -124,8 +116,8 @@
       <file leaf-file-name="Potiknoi.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Potiknoi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3318">
-              <caret line="158" column="93" lean-forward="false" selection-start-line="158" selection-start-column="93" selection-end-line="158" selection-end-column="93" />
+            <state relative-caret-position="525">
+              <caret line="205" column="13" lean-forward="true" selection-start-line="205" selection-start-column="13" selection-end-line="205" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -481,15 +473,16 @@
       <workItem from="1522774029118" duration="1218000" />
       <workItem from="1522777888831" duration="9490000" />
       <workItem from="1522816854418" duration="26173000" />
-      <workItem from="1522859668212" duration="8486000" />
+      <workItem from="1522859668212" duration="8632000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63295000" />
+    <option name="totallyTimeSpent" value="63441000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -500,7 +493,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1262349" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1262349" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1070,8 +1063,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Potiknoi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3318">
-          <caret line="158" column="93" lean-forward="false" selection-start-line="158" selection-start-column="93" selection-end-line="158" selection-end-column="93" />
+        <state relative-caret-position="525">
+          <caret line="205" column="13" lean-forward="true" selection-start-line="205" selection-start-column="13" selection-end-line="205" selection-end-column="13" />
           <folding />
         </state>
       </provider>

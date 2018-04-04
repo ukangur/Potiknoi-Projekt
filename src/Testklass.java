@@ -22,22 +22,22 @@ public class Testklass {
         System.out.println("Käes olevad kaardid on: " + käesOlevadKaardid);
         Kaart tapetav1 = pakk.get(20);
         System.out.println("Tapetav on: " + tapetav1);
-        List<Kaart> tapanSellega1 = testTrump.Tapa(tapetav1, käesOlevadKaardid);
+        List<Kaart> tapanSellega1 = testTrump.Tapa(tapetav1, käesOlevadKaardid,1);
         System.out.println("Tapan selle kaardiga: " + tapanSellega1);
 
         Kaart tapetav2 = pakk.get(1);
         System.out.println("Tapetav on: " + tapetav2);
-        List<Kaart> tapanSellega2 = testTrump.Tapa(tapetav2, käesOlevadKaardid);
+        List<Kaart> tapanSellega2 = testTrump.Tapa(tapetav2, käesOlevadKaardid,1);
         System.out.println("Tapan selle kaardiga: " + tapanSellega2);
 
         Kaart tapetav3 = pakk.get(19);
         System.out.println("Tapetav on: " + tapetav3);
-        List<Kaart> tapanSellega3 = testTrump.Tapa(tapetav3, käesOlevadKaardid);
+        List<Kaart> tapanSellega3 = testTrump.Tapa(tapetav3, käesOlevadKaardid,1);
         System.out.println("Tapan selle kaardiga: " + tapanSellega3); // Kuna tappa polnud võimalik, tagastati tühi list
 
 
         // Testin meetodi Käi
-        Kaart käidavKaart = testTrump.Käi(käesOlevadKaardid);
+        Kaart käidavKaart = testTrump.Käi(käesOlevadKaardid,1);
         System.out.println("Käidav kaart on: " + käidavKaart); // Käidav kaart on õige, sest 5♥ on trump
     }
 }

@@ -2,16 +2,15 @@ import java.util.*;
 
 public class Potiknoi {
 
-    Scanner sc = new Scanner(System.in);
-    Kaardipakk uusPakk = new Kaardipakk("väike");
-    List<Kaart> risti = uusPakk.getRisti();
-    List<Kaart> ruutu = uusPakk.getRuutu();
-    List<Kaart> poti = uusPakk.getPoti();
-    List<Kaart> ärtu = uusPakk.getÄrtu();
-    List<Kaart> pakk = uusPakk.getKaardipakk();
-    List<Kaart> koopia = new ArrayList<>(pakk); // loob koopia listist pakk nimega koopia
-    List<Kaart> mängija1Kaardid = new ArrayList<>();
-    List<Kaart> mängija2Kaardid = new ArrayList<>();
+    private Kaardipakk uusPakk = new Kaardipakk("väike");
+    private List<Kaart> risti = uusPakk.getRisti();
+    private List<Kaart> ruutu = uusPakk.getRuutu();
+    private List<Kaart> poti = uusPakk.getPoti();
+    private List<Kaart> ärtu = uusPakk.getÄrtu();
+    private List<Kaart> pakk = uusPakk.getKaardipakk();
+    private List<Kaart> koopia = new ArrayList<>(pakk); // loob koopia listist pakk nimega koopia
+    private List<Kaart> mängija1Kaardid = new ArrayList<>();
+    private List<Kaart> mängija2Kaardid = new ArrayList<>();
     private Kaart trump;
 
     public void mängTööle() {
@@ -48,10 +47,8 @@ public class Potiknoi {
             tase = 2;
         }
 
-
         //Lisasin mängijad koos kaartidega
-        System.out.println("Sisesta enda nimi: "); //<--- Küsin mängija nime
-        Mängija inimene = new Mängija(mängija1Kaardid, sc.nextLine());
+        Mängija inimene = new Mängija(mängija1Kaardid, küsimus.Nimi()); // Küsin ja saan mängija nime
         Mängija arvuti = new Mängija(mängija2Kaardid, "BOT");
 
 
@@ -208,10 +205,8 @@ public class Potiknoi {
 
     }
 
-    // Meetod, millega arvuti kaarte tappa saab. Sisestada tuleb tapetav kaart ja käes olevad kaardid.
-    // Tagastatakse üheelemendiline list, mille sees on kaart, millega saab tappa või tühi list kui tappa ei saa.
-    // Klass kasutab liste risti, ruutu, poti ärtu
-    // Meetod, millega arvuti kaarte tappa saab. Sisestada tuleb tapetav kaart ja käes olevad kaardid.
+
+    // Meetod, millega arvuti kaarte tappa saab. Sisestada tuleb tapetav kaart, käes olevad kaardid ja raskustakse (1 või 2).
     // Tagastatakse üheelemendiline list, mille sees on kaart, millega saab tappa või tühi list kui tappa ei saa.
     // Klass kasutab liste risti, ruutu, poti ärtu
     public List<Kaart> arvutiTapa(Kaart tapetav, List<Kaart> käesOlevadKaardid, int tase) {
@@ -232,6 +227,7 @@ public class Potiknoi {
             kasutatavPakk.addAll(ärtu);
         }
 
+        // Arvuti valib kõige nõrgema kaardi, millega tappa saab
         if (tase == 2) {
             for(int i = kasutatavPakk.size() - 1; i >= 0; i--) {
                 if (i < kasutatavPakk.indexOf(tapetav)) {
@@ -244,6 +240,7 @@ public class Potiknoi {
             return vastus;
         }
 
+        // Arvuti valib suvalise kaardi, millega tappa saab
         else if (tase == 1) {
             for(int i = kasutatavPakk.size() - 1; i >= 0; i--) {
                 if (i < kasutatavPakk.indexOf(tapetav)) {
@@ -266,6 +263,7 @@ public class Potiknoi {
         return vastus;
     }
 
+    // Tagastab listi, mille sees on kõik kaardid, millega mängijal tapetavat kaarti tappa on võimalik
     public List<Kaart> MängijaTapab(Kaart tapetav, List<Kaart> MängijakäesOlevadKaardid) {
         List<Kaart> vastus = new ArrayList<>();
         List<Kaart> kasutatavPakk = new ArrayList<>();
@@ -293,7 +291,8 @@ public class Potiknoi {
         return vastus;
     }
 
-    // Meetod, millega arvuti käib alati kõige nõrgema kaardi. Sisestatakse arvuti käes olevate kaartide list.
+    // Meetod, millega arvuti käib alati kõige nõrgema kaardi (tase 2) või suvaline kaart (tase 1)
+    // Sisestatakse arvuti käes olevate kaartide list.
     // Tagastatakse kaart, mille arvuti käib
     // Meetod kasutab tugevuslisti nimega koopia
     public Kaart Käi(List<Kaart> käesOlevadKaardid, int tase) {
@@ -313,6 +312,9 @@ public class Potiknoi {
         return käesOlevadKaardid.get(0); // Seda return'i kunagi ei kasutata, aga selle peab siia panema, muidu pole võimalik meetodit kirja panna
     }
 
+    // Anna parameetriks trump-kaart ja meetod lisab trumbi masti kaardid ülejäänud mastide listidesse
+    // NB! pakk, koopia, risti, ruutu, poti ärtu listid peavad varasemalt olemas olema!
+    // NB! meetod SuurTugevuslist on vaja, sest TrumbiAktiveerimine kasutab seda!
     public void TrumbiAktiveerimine(Kaart trump) {
         List<Kaart> lisatav = new ArrayList<>();
         char mast = trump.getMast();

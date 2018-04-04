@@ -74,5 +74,17 @@ public class Küsimus {
         }
     }
 
+    public String Nimi() {
+        String vastus = "";
+
+        while(vastus.length() == 0) {
+            System.out.println("Sisesta enda nimi: ");
+            if (sc.hasNextLine()) {
+                vastus = sc.nextLine();
+            }
+        }
+        return vastus;
+    }
+
 
 }

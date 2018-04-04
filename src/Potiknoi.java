@@ -3,7 +3,7 @@ import java.util.*;
 public class Potiknoi {
 
     Scanner sc = new Scanner(System.in);
-    Kaardipakk uusPakk = new Kaardipakk();
+    Kaardipakk uusPakk = new Kaardipakk("väike");
     List<Kaart> risti = uusPakk.getRisti();
     List<Kaart> ruutu = uusPakk.getRuutu();
     List<Kaart> poti = uusPakk.getPoti();
@@ -47,9 +47,10 @@ public class Potiknoi {
         List<Kaart> laualOlevadKaardid = mäng.getLaualOlevadKaardid();
         int kesKäib = 1; //Kui on 1, käib inimene, kui 0, siis arvuti
 
-        System.out.println(inimeseKäes + "-MINA");
-        System.out.println(arvutiKäes + "-BOT");
-        System.out.println(trump + "-TRUMP");
+        System.out.println(inimeseKäes + " - mängija" + inimeseNimi + "käsi.");
+        System.out.println(trump + " -TRUMP.");
+        System.out.println();
+        System.out.println();
 
         while (true) {
             if (pakk.size() > 0 || (inimeseKäes.size() > 0 && arvutiKäes.size() > 0)) {
@@ -70,7 +71,7 @@ public class Potiknoi {
                             mäng.setKaartLauale(millineKaart);
                             System.out.println(inimeseNimi + " käib kaardi: " + millineKaart);
                             inimene.eemaldaKäestKaart(millineKaart);
-                            System.out.println(laualOlevadKaardid);
+                            System.out.println(laualOlevadKaardid + "<-- Hetkel mängus olevad kaardid");
                             millineKäik = küsimus.MillineKäik(erinevadKäigud);
                         } else {
                             System.out.println("Seda kaarti ei saa lisada!");
@@ -80,17 +81,23 @@ public class Potiknoi {
 
                     //Siin hakkab arvuti tapma. Kui arvuti korjab, siis kesKäib = 1 ehk inimene käib uuesti.
                     for (Kaart tapetav : laualOlevadKaardid) {
-                        System.out.println(tapetav);
+                        System.out.println();
+                        System.out.println();
+                        System.out.println("BOT hakkab tapma");
+                        System.out.println();
                         List<Kaart> tappevKaart = arvutiTapa(tapetav, arvutiKäes);
                         if (tappevKaart.size() > 0) {
                             mäng.setTapvadKaardid(tappevKaart);
                             arvuti.eemaldaKäestKaart(tappevKaart.get(0));
-                            kesKäib = 0;  //Tegelikult peab siin "0" olema, aga testimse ajal olgu "1"
-                            //System.out.println(arvutiKäes);
+                            kesKäib = 0;
                         } else {
                             arvuti.võtaÜles(mäng.getLaualOlevadKaardid());
                             arvuti.võtaÜles(mäng.getTapvadKaardid());
                             kesKäib = 1;
+                            System.out.println("BOT korjab kaardid üles.");
+                            System.out.println();
+                            System.out.println("-------------------------");
+                            System.out.println();
                         }
                     }
 
@@ -100,22 +107,22 @@ public class Potiknoi {
                     while (arvutiKäes.size() < 6 && pakk.size() > 0) {
                         arvuti.võtaKaarteJuurde(pakk);
                     }
-                    System.out.println(inimeseKäes);
-                    System.out.println(arvutiKäes);
                     System.out.println("Tihi on mängitud!");
+                    System.out.println();
                     //Teen laua ja tapvad kaardid tühjaks.
                     laualOlevadKaardid.clear();
                     mäng.teeTapvadTühjaks();
-                    System.out.println(mäng.getTapvadKaardid());
-                    System.out.println(mäng.getLaualOlevadKaardid());
 
                 }
                 else {
+                    System.out.println();
+                    System.out.println("BOT käib.");
+                    System.out.println();
                     List<String> erinevadKäigud = Arrays.asList("tapa", "korja üles");
                     Kaart käik = Käi(arvutiKäes);
                     mäng.setKaartLauale(käik);
                     arvuti.eemaldaKäestKaart(käik);
-                    System.out.println(laualOlevadKaardid + "<-- BOTi käidud kaart");
+                    System.out.println(laualOlevadKaardid + "<-- Hetkel mängus olevad kaardid");
                     for (Kaart tapetav : laualOlevadKaardid) {
                         String millineKäik = küsimus.MillineKäik(erinevadKäigud);
                             if (millineKäik == "korja üles") {
@@ -126,9 +133,10 @@ public class Potiknoi {
                             }
                             else {
                                 List<Kaart> tappevKaart = MängijaTapab(tapetav, inimeseKäes);
-                                Kaart millineKaart = küsimus.MillineKaart(tappevKaart);
                                 if (tappevKaart.size() == 0) {
+                                    System.out.println();
                                     System.out.println("Sa ei saa midagi käia ning korjad kaardid üles!");
+                                    System.out.println();
                                     inimene.võtaÜles(laualOlevadKaardid);
                                     inimene.võtaÜles(mäng.getTapvadKaardid());
                                     kesKäib = 0;
@@ -136,33 +144,39 @@ public class Potiknoi {
 
                                 }
                                 else {
+                                    Kaart millineKaart = küsimus.MillineKaart(tappevKaart);
                                     List<Kaart> mingidKaardid = new ArrayList<>();
                                     mingidKaardid.add(millineKaart);
                                     mäng.setTapvadKaardid(mingidKaardid);
                                     inimene.eemaldaKäestKaart(millineKaart);
                                     kesKäib = 1;
+                                    System.out.println();
+                                    System.out.println("Sa tapsid kaardi!");
+                                    System.out.println();
                                 }
                             }
 
                     }
-                    while (inimeseKäes.size() < 6) {
+                    while (inimeseKäes.size() < 6 && pakk.size() > 0) {
                         inimene.võtaKaarteJuurde(pakk);
                     }
-                    while (arvutiKäes.size() < 6) {
+                    while (arvutiKäes.size() < 6 && pakk.size() > 0) {
                         arvuti.võtaKaarteJuurde(pakk);
                     }
 
-                    System.out.println(inimeseKäes);
-                    System.out.println(arvutiKäes);
                     System.out.println("Tihi on mängitud!");
+                    System.out.println();
                     //Teen laua ja tapvad kaardid tühjaks.
                     laualOlevadKaardid.clear();
                     mäng.teeTapvadTühjaks();
-                    System.out.println(mäng.getTapvadKaardid());
-                    System.out.println(mäng.getLaualOlevadKaardid());
                 }
             }
+            else {
+                System.out.println("Mäng on läbi!!! Keegi võitis ja keegi kaotas, aga hasartmängus mehed ei nuta!");
+                break;
+            }
         }
+
     }
 
     // Meetod, millega arvuti kaarte tappa saab. Sisestada tuleb tapetav kaart ja käes olevad kaardid.

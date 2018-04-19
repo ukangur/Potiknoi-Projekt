@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Potiknoi {
 
-    private Kaardipakk uusPakk = new Kaardipakk("väike");
+    private Kaardipakk uusPakk = new Kaardipakk();
     private List<Kaart> risti = uusPakk.getRisti();
     private List<Kaart> ruutu = uusPakk.getRuutu();
     private List<Kaart> poti = uusPakk.getPoti();

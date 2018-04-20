@@ -51,7 +51,6 @@ public class Graafika extends Application {
 
 
  Rectangle bg = new Rectangle(900, 600);
- bg.setFill(Color.BLUE);
 
         MenuItem itemExit = new MenuItem("Välju Mängust");
         itemExit.setOnActivate(() -> System.exit(0));
@@ -104,7 +103,6 @@ public class Graafika extends Application {
 
             getChildren().addAll(text);
             setActive(false);
-            setOnActivate(() -> System.out.println(name + " aktiveeritud"));
         }
 
         public void setActive(boolean b) {

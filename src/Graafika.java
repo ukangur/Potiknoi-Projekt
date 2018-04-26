@@ -1,17 +1,15 @@
-import java.awt.*;
+import java.awt.font.ImageGraphicAttribute;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
-import javafx.animation.FadeTransition;
-import javafx.animation.ParallelTransition;
-import javafx.animation.TranslateTransition;
 import javafx.application.Application;
-import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
@@ -24,7 +22,8 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
-import javafx.util.Duration;
+
+import static javafx.scene.paint.Color.BLACK;
 
 
 //menuitemi klassi sain netist
@@ -36,44 +35,72 @@ public class Graafika extends Application {
     private VBox menuBox;
     private int currentItem = 0;
 
-    private int messages = 0;
-
     private ScheduledExecutorService bgThread = Executors.newSingleThreadScheduledExecutor();
 
     private Parent LooSisu() {
-        Pane root = new Pane();
+        StackPane root = new StackPane();
         root.setPrefSize(900, 600);
 
-        BackgroundImage piltbg = new BackgroundImage(new Image("Taust.png",900,600,false,true),
+        BackgroundImage piltbg = new BackgroundImage(new Image("Taust.png", 900, 600, true, true),
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
 
+        Image pilt = new Image("taust.png");
+        Rectangle bg = new Rectangle(900, 600);
+
+        root.heightProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                double y = newValue.doubleValue();
+
+                bg.setHeight(y);
 
 
- Rectangle bg = new Rectangle(900, 600);
+            }
+        });
+
+        root.widthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                double x = newValue.doubleValue();
+                bg.setWidth(x);
+
+            }
+        });
 
         MenuItem itemExit = new MenuItem("Välju Mängust");
         itemExit.setOnActivate(() -> System.exit(0));
 
+        MenuItem itemPlay = new MenuItem("Mängima");
+        itemPlay.setOnActivate(() -> System.exit(0));
+
+        MenuItem itemSettings = new MenuItem("Seaded");
+        itemSettings.setOnActivate(() -> System.exit(0));
+
+        MenuItem itemMusic = new MenuItem("Muusika");
+        itemMusic.setOnActivate(() -> System.exit(0));
+
+        MenuItem itemInstruction = new MenuItem("Õpetus");
+        itemInstruction.setOnActivate(() -> System.exit(0));
+
         menuBox = new VBox(20,
-                new MenuItem("Mängima"),
-                new MenuItem("Seaded"),
-                new MenuItem("Muusika valik"),
-                new MenuItem("Õpetus"),
+                itemPlay,
+                itemSettings,
+                itemMusic,
+                itemInstruction,
                 itemExit);
-        menuBox.setAlignment(Pos.TOP_CENTER);
-        menuBox.setTranslateX(360);
-        menuBox.setTranslateY(300);
+        menuBox.setAlignment(Pos.CENTER);
 
         getMenuItem(0).setActive(true);
 
         root.getChildren().addAll(bg, menuBox);
+        StackPane.setAlignment(menuBox,Pos.CENTER);
 
         return root;
     }
 
     private MenuItem getMenuItem(int index) {
-        return (MenuItem)menuBox.getChildren().get(index);
+        return (MenuItem) menuBox.getChildren().get(index);
     }
 
     private static class SisuRaam extends StackPane {

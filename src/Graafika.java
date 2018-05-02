@@ -1,4 +1,5 @@
 import java.awt.font.ImageGraphicAttribute;
+import java.io.File;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
@@ -13,6 +14,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
@@ -22,6 +25,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
+import javafx.stage.Window;
 
 import static javafx.scene.paint.Color.BLACK;
 
@@ -30,6 +34,9 @@ import static javafx.scene.paint.Color.BLACK;
 
 public class Graafika extends Application {
 
+    private Stage stage;
+    private Scene scene;
+
     private static final Font FONT = Font.font("", FontWeight.BOLD, 18);
 
     private VBox menuBox;
@@ -37,15 +44,10 @@ public class Graafika extends Application {
 
     private ScheduledExecutorService bgThread = Executors.newSingleThreadScheduledExecutor();
 
-    private Parent LooSisu() {
+    public Parent LooSisu() {
         StackPane root = new StackPane();
         root.setPrefSize(900, 600);
 
-        BackgroundImage piltbg = new BackgroundImage(new Image("Taust.png", 900, 600, true, true),
-                BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
-                BackgroundSize.DEFAULT);
-
-        Image pilt = new Image("taust.png");
         Rectangle bg = new Rectangle(900, 600);
 
         root.heightProperty().addListener(new ChangeListener<Number>() {
@@ -68,6 +70,29 @@ public class Graafika extends Application {
             }
         });
 
+        Scene scene1 = new Scene(LooSisu2());
+
+        scene1.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.UP) {
+                if (currentItem > 0) {
+                    getMenuItem(currentItem).setActive(false);
+                    getMenuItem(--currentItem).setActive(true);
+                }
+            }
+
+            if (event.getCode() == KeyCode.DOWN) {
+                if (currentItem < menuBox.getChildren().size() - 1) {
+                    getMenuItem(currentItem).setActive(false);
+                    getMenuItem(++currentItem).setActive(true);
+                }
+            }
+
+            if (event.getCode() == KeyCode.ENTER) {
+                getMenuItem(currentItem).activate();
+            }
+
+        });
+
         MenuItem itemExit = new MenuItem("Välju Mängust");
         itemExit.setOnActivate(() -> System.exit(0));
 
@@ -78,7 +103,7 @@ public class Graafika extends Application {
         itemSettings.setOnActivate(() -> System.exit(0));
 
         MenuItem itemMusic = new MenuItem("Muusika");
-        itemMusic.setOnActivate(() -> System.exit(0));
+        itemMusic.setOnActivate(() -> stage.setScene(scene1));
 
         MenuItem itemInstruction = new MenuItem("Õpetus");
         itemInstruction.setOnActivate(() -> System.exit(0));
@@ -94,7 +119,68 @@ public class Graafika extends Application {
         getMenuItem(0).setActive(true);
 
         root.getChildren().addAll(bg, menuBox);
-        StackPane.setAlignment(menuBox,Pos.CENTER);
+        StackPane.setAlignment(menuBox, Pos.CENTER);
+
+        return root;
+    }
+
+    public Parent LooSisu2() {
+        StackPane root = new StackPane();
+        root.setPrefSize(900, 600);
+
+        Rectangle bg = new Rectangle(900, 600);
+
+        root.heightProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                double y = newValue.doubleValue();
+
+                bg.setHeight(y);
+
+
+            }
+        });
+
+        root.widthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                double x = newValue.doubleValue();
+                bg.setWidth(x);
+
+            }
+        });
+
+        Media menuMusic1 = new Media(new File("C:\\Users\\Laptop\\Documents\\GitHub\\Potiknoi-Projekt\\out\\production\\Potiknoi\\muusika1.mp3").toURI().toString());
+        MediaPlayer mp1 = new MediaPlayer(menuMusic1);
+        mp1.setCycleCount(MediaPlayer.INDEFINITE);
+
+        MenuItem itemMusic1 = new MenuItem("Lugu 1");
+        itemMusic1.setOnActivate(mp1::play);
+
+        MenuItem itemPlay = new MenuItem("Lugu 2");
+        itemPlay.setOnActivate(() -> System.exit(0));
+
+        MenuItem itemSettings = new MenuItem("Lugu 3");
+        itemSettings.setOnActivate(() -> System.exit(0));
+
+        MenuItem itemMusic = new MenuItem("Lugu 4");
+        itemMusic.setOnActivate(() -> System.exit(0));
+
+        MenuItem itemInstruction = new MenuItem("Lugu 5");
+        itemInstruction.setOnActivate(() -> System.exit(0));
+
+        menuBox = new VBox(20,
+                itemMusic1,
+                itemPlay,
+                itemSettings,
+                itemMusic,
+                itemInstruction);
+        menuBox.setAlignment(Pos.CENTER);
+
+        getMenuItem(0).setActive(true);
+
+        root.getChildren().addAll(bg, menuBox);
+        StackPane.setAlignment(menuBox, Pos.CENTER);
 
         return root;
     }
@@ -144,11 +230,18 @@ public class Graafika extends Application {
             if (script != null)
                 script.run();
         }
+
     }
+
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Scene scene = new Scene(LooSisu());
+
+        this.stage = primaryStage;
+        this.scene = new Scene(LooSisu());
+
+
         scene.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.UP) {
                 if (currentItem > 0) {
@@ -167,12 +260,15 @@ public class Graafika extends Application {
             if (event.getCode() == KeyCode.ENTER) {
                 getMenuItem(currentItem).activate();
             }
+
         });
+
 
         primaryStage.setScene(scene);
         primaryStage.setOnCloseRequest(event -> {
             bgThread.shutdownNow();
         });
+
         primaryStage.show();
     }
 

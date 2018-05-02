@@ -1,4 +1,4 @@
-import java.awt.font.ImageGraphicAttribute;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -6,28 +6,23 @@ import java.util.concurrent.ScheduledExecutorService;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.scene.image.Image;
-import javafx.stage.Window;
-
-import static javafx.scene.paint.Color.BLACK;
 
 
 //menuitemi klassi sain netist
@@ -35,7 +30,8 @@ import static javafx.scene.paint.Color.BLACK;
 public class Graafika extends Application {
 
     private Stage stage;
-    private Scene scene;
+    private Scene scene1;
+    private Scene scene2;
 
     private static final Font FONT = Font.font("", FontWeight.BOLD, 18);
 
@@ -43,6 +39,35 @@ public class Graafika extends Application {
     private int currentItem = 0;
 
     private ScheduledExecutorService bgThread = Executors.newSingleThreadScheduledExecutor();
+
+    private EventHandler getHandler(){
+        EventHandler handler = new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                if (event.getCode() == KeyCode.UP) {
+                    if (currentItem > 0) {
+                        Graafika.this.getMenuItem(currentItem).setActive(false);
+                        Graafika.this.getMenuItem(--currentItem).setActive(true);
+                    }
+                }
+
+                if (event.getCode() == KeyCode.DOWN) {
+                    if (currentItem < menuBox.getChildren().size() - 1) {
+                        Graafika.this.getMenuItem(currentItem).setActive(false);
+                        Graafika.this.getMenuItem(++currentItem).setActive(true);
+                    }
+                }
+
+                if (event.getCode() == KeyCode.ENTER) {
+                    Graafika.this.getMenuItem(currentItem).activate();
+                }
+
+            }
+        };
+        return handler;
+    }
+
+    ;
 
     public Parent LooSisu() {
         StackPane root = new StackPane();
@@ -70,28 +95,7 @@ public class Graafika extends Application {
             }
         });
 
-        Scene scene1 = new Scene(LooSisu2());
-
-        scene1.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.UP) {
-                if (currentItem > 0) {
-                    getMenuItem(currentItem).setActive(false);
-                    getMenuItem(--currentItem).setActive(true);
-                }
-            }
-
-            if (event.getCode() == KeyCode.DOWN) {
-                if (currentItem < menuBox.getChildren().size() - 1) {
-                    getMenuItem(currentItem).setActive(false);
-                    getMenuItem(++currentItem).setActive(true);
-                }
-            }
-
-            if (event.getCode() == KeyCode.ENTER) {
-                getMenuItem(currentItem).activate();
-            }
-
-        });
+        Scene scene2 = new Scene(LooSisu2());
 
         MenuItem itemExit = new MenuItem("Välju Mängust");
         itemExit.setOnActivate(() -> System.exit(0));
@@ -103,7 +107,10 @@ public class Graafika extends Application {
         itemSettings.setOnActivate(() -> System.exit(0));
 
         MenuItem itemMusic = new MenuItem("Muusika");
-        itemMusic.setOnActivate(() -> stage.setScene(scene1));
+        itemMusic.setOnActivate(() -> {
+            stage.setScene(scene2);
+            scene2.setOnKeyPressed(getHandler());
+        });
 
         MenuItem itemInstruction = new MenuItem("Õpetus");
         itemInstruction.setOnActivate(() -> System.exit(0));
@@ -125,6 +132,7 @@ public class Graafika extends Application {
     }
 
     public Parent LooSisu2() {
+
         StackPane root = new StackPane();
         root.setPrefSize(900, 600);
 
@@ -153,6 +161,7 @@ public class Graafika extends Application {
         Media menuMusic1 = new Media(new File("C:\\Users\\Laptop\\Documents\\GitHub\\Potiknoi-Projekt\\out\\production\\Potiknoi\\muusika1.mp3").toURI().toString());
         MediaPlayer mp1 = new MediaPlayer(menuMusic1);
         mp1.setCycleCount(MediaPlayer.INDEFINITE);
+
 
         MenuItem itemMusic1 = new MenuItem("Lugu 1");
         itemMusic1.setOnActivate(mp1::play);
@@ -234,37 +243,16 @@ public class Graafika extends Application {
     }
 
 
-
     @Override
     public void start(Stage primaryStage) throws Exception {
 
         this.stage = primaryStage;
-        this.scene = new Scene(LooSisu());
+        Scene scene1 = new Scene(LooSisu());
+
+        scene1.setOnKeyPressed(getHandler());
 
 
-        scene.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.UP) {
-                if (currentItem > 0) {
-                    getMenuItem(currentItem).setActive(false);
-                    getMenuItem(--currentItem).setActive(true);
-                }
-            }
-
-            if (event.getCode() == KeyCode.DOWN) {
-                if (currentItem < menuBox.getChildren().size() - 1) {
-                    getMenuItem(currentItem).setActive(false);
-                    getMenuItem(++currentItem).setActive(true);
-                }
-            }
-
-            if (event.getCode() == KeyCode.ENTER) {
-                getMenuItem(currentItem).activate();
-            }
-
-        });
-
-
-        primaryStage.setScene(scene);
+        primaryStage.setScene(scene1);
         primaryStage.setOnCloseRequest(event -> {
             bgThread.shutdownNow();
         });

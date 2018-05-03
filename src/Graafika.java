@@ -158,7 +158,7 @@ public class Graafika extends Application {
             }
         });
 
-        Media menuMusic1 = new Media(new File("C:\\Users\\Laptop\\Documents\\GitHub\\Potiknoi-Projekt\\out\\production\\Potiknoi\\muusika1.mp3").toURI().toString());
+        Media menuMusic1 = new Media(new File("muusika1.mp3").toURI().toString());
         MediaPlayer mp1 = new MediaPlayer(menuMusic1);
         mp1.setCycleCount(MediaPlayer.INDEFINITE);
 

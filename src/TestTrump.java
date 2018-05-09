@@ -19,25 +19,27 @@ public class TestTrump {
     public void TrumbiAktiveerimine(Kaart trump) {
         List<Kaart> lisatav = new ArrayList<>();
         char mast = trump.getMast();
-        if (mast == '♣') {
-            lisatav.addAll(risti);
-            SuurTugevuslist('♣');
-            koopia.addAll(0, risti);
-        }
-        else if (mast == '♦') {
-            lisatav.addAll(ruutu);
-            SuurTugevuslist('♦');
-            koopia.addAll(0, ruutu);
-        }
-        else if (mast == '♠') {
-            lisatav.addAll(poti);
-            SuurTugevuslist('♠');
-            koopia.addAll(0, poti);
-        }
-        else if (mast == '♥') {
-            lisatav.addAll(ärtu);
-            SuurTugevuslist('♥');
-            koopia.addAll(0, ärtu);
+        switch (mast) {
+            case '♣':
+                lisatav.addAll(risti);
+                SuurTugevuslist('♣');
+                koopia.addAll(0, risti);
+                break;
+            case '♦':
+                lisatav.addAll(ruutu);
+                SuurTugevuslist('♦');
+                koopia.addAll(0, ruutu);
+                break;
+            case '♠':
+                lisatav.addAll(poti);
+                SuurTugevuslist('♠');
+                koopia.addAll(0, poti);
+                break;
+            case '♥':
+                lisatav.addAll(ärtu);
+                SuurTugevuslist('♥');
+                koopia.addAll(0, ärtu);
+                break;
         }
         if (!(mast == '♣')) {
             risti.addAll(0, lisatav);
@@ -78,17 +80,19 @@ public class TestTrump {
         List<Kaart> vastus = new ArrayList<>();
         List<Kaart> kasutatavPakk = new ArrayList<>();
         char mast = tapetav.getMast();
-        if (mast == '♣') {
-            kasutatavPakk.addAll(risti);
-        }
-        else if (mast == '♦') {
-            kasutatavPakk.addAll(ruutu);
-        }
-        else if (mast == '♠') {
-            kasutatavPakk.addAll(poti);
-        }
-        else if (mast == '♥') {
-            kasutatavPakk.addAll(ärtu);
+        switch (mast) {
+            case '♣':
+                kasutatavPakk.addAll(risti);
+                break;
+            case '♦':
+                kasutatavPakk.addAll(ruutu);
+                break;
+            case '♠':
+                kasutatavPakk.addAll(poti);
+                break;
+            case '♥':
+                kasutatavPakk.addAll(ärtu);
+                break;
         }
 
         if (tase == 2) {
@@ -149,17 +153,19 @@ public class TestTrump {
         List<Kaart> vastus = new ArrayList<>();
         List<Kaart> kasutatavPakk = new ArrayList<>();
         char mast = tapetav.getMast();
-        if (mast == '♣') {
-            kasutatavPakk.addAll(risti);
-        }
-        else if (mast == '♦') {
-            kasutatavPakk.addAll(ruutu);
-        }
-        else if (mast == '♠') {
-            kasutatavPakk.addAll(poti);
-        }
-        else if (mast == '♥') {
-            kasutatavPakk.addAll(ärtu);
+        switch (mast) {
+            case '♣':
+                kasutatavPakk.addAll(risti);
+                break;
+            case '♦':
+                kasutatavPakk.addAll(ruutu);
+                break;
+            case '♠':
+                kasutatavPakk.addAll(poti);
+                break;
+            case '♥':
+                kasutatavPakk.addAll(ärtu);
+                break;
         }
 
         for(int i = kasutatavPakk.size() - 1; i >= 0; i--) {
@@ -179,17 +185,19 @@ public class TestTrump {
         List<Kaart> vastus = new ArrayList<>();
         List<Kaart> kasutatavPakk = new ArrayList<>();
         char mast = tapetav.getMast();
-        if (mast == '♣') {
-            kasutatavPakk.addAll(risti);
-        }
-        else if (mast == '♦') {
-            kasutatavPakk.addAll(ruutu);
-        }
-        else if (mast == '♠') {
-            kasutatavPakk.addAll(poti);
-        }
-        else if (mast == '♥') {
-            kasutatavPakk.addAll(ärtu);
+        switch (mast) {
+            case '♣':
+                kasutatavPakk.addAll(risti);
+                break;
+            case '♦':
+                kasutatavPakk.addAll(ruutu);
+                break;
+            case '♠':
+                kasutatavPakk.addAll(poti);
+                break;
+            case '♥':
+                kasutatavPakk.addAll(ärtu);
+                break;
         }
 
         for(int i = kasutatavPakk.size() - 1; i >= 0; i--) {

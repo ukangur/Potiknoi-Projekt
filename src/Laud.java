@@ -8,8 +8,8 @@ public class Laud {
 
     public Laud(Kaart trump) {
         this.trump = trump;
-        this.laualOlevadKaardid = new ArrayList<Kaart>();
-        this.tapvadKaardid = new ArrayList<Kaart>();
+        this.laualOlevadKaardid = new ArrayList<>();
+        this.tapvadKaardid = new ArrayList<>();
     }
 
     public List<Kaart> getLaualOlevadKaardid() {
@@ -21,11 +21,11 @@ public class Laud {
     }
 
     public void teeLaudTühjaks() {
-        this.laualOlevadKaardid = new ArrayList<Kaart>();
+        this.laualOlevadKaardid = new ArrayList<>();
     }
 
     public void teeTapvadTühjaks() {
-        this.tapvadKaardid = new ArrayList<Kaart>();
+        this.tapvadKaardid = new ArrayList<>();
     }
 
     public void setKaartLauale(Kaart käidudKaart) {

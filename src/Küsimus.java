@@ -9,11 +9,11 @@ public class Küsimus {
     // Siis küsitakse mängijalt, millist kaarti ta nendest sooib kasutada ja valiku numbri
     // Tagastatakse kaart, mille mängija valis
     public Kaart MillineKaart(List<Kaart> kaardid) {
-        String küsimus = "Millist kaarti soovid käia?\n   Valikud:";
+        StringBuilder küsimus = new StringBuilder("Millist kaarti soovid käia?\n   Valikud:");
         for (int i = 1; i <= kaardid.size(); i++) {
-            küsimus += " " + i + "." + kaardid.get(i-1).toString();
+            küsimus.append(" ").append(i).append(".").append(kaardid.get(i - 1).toString());
         }
-        küsimus += "\nSisesta valiku number!";
+        küsimus.append("\nSisesta valiku number!");
         System.out.println(küsimus);
 
         for (; ; ) {
@@ -34,11 +34,11 @@ public class Küsimus {
     // Siis küsitakse mängijalt, millist käiku ta soovib teha
     // Tagastatakse mängija valitud käik (sõnena)
     public String MillineKäik(List<String> käigud) {
-        String küsimus = "Kas soovid:";
+        StringBuilder küsimus = new StringBuilder("Kas soovid:");
         for (int i = 1; i <= käigud.size(); i++) {
-            küsimus += " " + i + "." + käigud.get(i - 1);
+            küsimus.append(" ").append(i).append(".").append(käigud.get(i - 1));
         }
-        küsimus += "\nSisesta valiku number!";
+        küsimus.append("\nSisesta valiku number!");
         System.out.println(küsimus);
 
         for (; ; ) {
@@ -60,11 +60,11 @@ public class Küsimus {
     // Siis küsitakse mängijalt, millist taset ta soovib
     // Tagastatakse mängija valitud tase (sõnena)
     public String MillineTase(List<String> tase) {
-        String küsimus = "Millise raskustasemega soovid mängida:";
+        StringBuilder küsimus = new StringBuilder("Millise raskustasemega soovid mängida:");
         for (int i = 1; i <= tase.size(); i++) {
-            küsimus += " " + i + "." + tase.get(i - 1);
+            küsimus.append(" ").append(i).append(".").append(tase.get(i - 1));
         }
-        küsimus += "\nSisesta raskusastme number!";
+        küsimus.append("\nSisesta raskusastme number!");
         System.out.println(küsimus);
 
         for (; ; ) {

@@ -41,33 +41,27 @@ public class Graafika extends Application {
     private ScheduledExecutorService bgThread = Executors.newSingleThreadScheduledExecutor();
 
     private EventHandler getHandler(){
-        EventHandler handler = new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                if (event.getCode() == KeyCode.UP) {
-                    if (currentItem > 0) {
-                        Graafika.this.getMenuItem(currentItem).setActive(false);
-                        Graafika.this.getMenuItem(--currentItem).setActive(true);
-                    }
+        return (EventHandler<KeyEvent>) event -> {
+            if (event.getCode() == KeyCode.UP) {
+                if (currentItem > 0) {
+                    this.getMenuItem(currentItem).setActive(false);
+                    this.getMenuItem(--currentItem).setActive(true);
                 }
-
-                if (event.getCode() == KeyCode.DOWN) {
-                    if (currentItem < menuBox.getChildren().size() - 1) {
-                        Graafika.this.getMenuItem(currentItem).setActive(false);
-                        Graafika.this.getMenuItem(++currentItem).setActive(true);
-                    }
-                }
-
-                if (event.getCode() == KeyCode.ENTER) {
-                    Graafika.this.getMenuItem(currentItem).activate();
-                }
-
             }
-        };
-        return handler;
-    }
 
-    ;
+            if (event.getCode() == KeyCode.DOWN) {
+                if (currentItem < menuBox.getChildren().size() - 1) {
+                    this.getMenuItem(currentItem).setActive(false);
+                    this.getMenuItem(++currentItem).setActive(true);
+                }
+            }
+
+            if (event.getCode() == KeyCode.ENTER) {
+                this.getMenuItem(currentItem).activate();
+            }
+
+        };
+    }
 
     public Parent LooSisu() {
         StackPane root = new StackPane();
@@ -75,24 +69,18 @@ public class Graafika extends Application {
 
         Rectangle bg = new Rectangle(900, 600);
 
-        root.heightProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                double y = newValue.doubleValue();
+        root.heightProperty().addListener((observable, oldValue, newValue) -> {
+            double y = newValue.doubleValue();
 
-                bg.setHeight(y);
+            bg.setHeight(y);
 
 
-            }
         });
 
-        root.widthProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                double x = newValue.doubleValue();
-                bg.setWidth(x);
+        root.widthProperty().addListener((observable, oldValue, newValue) -> {
+            double x = newValue.doubleValue();
+            bg.setWidth(x);
 
-            }
         });
 
         Scene scene2 = new Scene(LooSisu2());
@@ -138,24 +126,18 @@ public class Graafika extends Application {
 
         Rectangle bg = new Rectangle(900, 600);
 
-        root.heightProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                double y = newValue.doubleValue();
+        root.heightProperty().addListener((observable, oldValue, newValue) -> {
+            double y = newValue.doubleValue();
 
-                bg.setHeight(y);
+            bg.setHeight(y);
 
 
-            }
         });
 
-        root.widthProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                double x = newValue.doubleValue();
-                bg.setWidth(x);
+        root.widthProperty().addListener((observable, oldValue, newValue) -> {
+            double x = newValue.doubleValue();
+            bg.setWidth(x);
 
-            }
         });
 
         Media menuMusic1 = new Media(new File("muusika1.mp3").toURI().toString());
@@ -253,9 +235,7 @@ public class Graafika extends Application {
 
 
         primaryStage.setScene(scene1);
-        primaryStage.setOnCloseRequest(event -> {
-            bgThread.shutdownNow();
-        });
+        primaryStage.setOnCloseRequest(event -> bgThread.shutdownNow());
 
         primaryStage.show();
     }

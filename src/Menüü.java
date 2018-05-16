@@ -35,6 +35,7 @@ public class Menüü extends Application {
     private Scene scene1;
     private Scene scene2;
     private Scene scene3;
+    private Scene scene4;
 
     private static final Font FONT = Font.font("", FontWeight.BOLD, 18);
 
@@ -89,7 +90,7 @@ public class Menüü extends Application {
         itemExit.setOnActivate(() -> System.exit(0));
 
         MenuItem itemPlay = new MenuItem("Mängima");
-        itemPlay.setOnActivate(() -> System.exit(0));
+        itemPlay.setOnActivate(() -> stage.setScene(scene4));
 
         MenuItem itemMusic = new MenuItem("Muusika");
         itemMusic.setOnActivate(() -> {
@@ -288,6 +289,34 @@ kirjeldus.setFont(Font.font("Arial",20));
         getHandler(menuBox);
 
         scene3 = new Scene(root);
+        scene3.setOnKeyPressed(getHandler(menuBox));
+    }
+
+    private void LooSisu4() {
+
+        StackPane root = new StackPane();
+        root.setPrefSize(800, 600);
+
+        Rectangle bg = new Rectangle(800, 600);
+
+        root.heightProperty().addListener((observable, oldValue, newValue) -> {
+            double y = newValue.doubleValue();
+
+            bg.setHeight(y);
+
+
+        });
+
+        root.widthProperty().addListener((observable, oldValue, newValue) -> {
+            double x = newValue.doubleValue();
+            bg.setWidth(x);
+
+        });
+
+
+        root.getChildren().addAll(bg);
+
+        scene4 = new Scene(root);
     }
 
     private MenuItem getMenuItem(int index) {
@@ -342,6 +371,7 @@ kirjeldus.setFont(Font.font("Arial",20));
     public void start(Stage primaryStage) throws Exception {
         LooSisu2();
         LooSisu3();
+        LooSisu4();
         LooSisu();
 
         this.stage = primaryStage;

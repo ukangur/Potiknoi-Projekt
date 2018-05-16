@@ -178,17 +178,41 @@ public class Menüü extends Application {
         mp4.setCycleCount(MediaPlayer.INDEFINITE);
 
         MenuItem itemMusic1 = new MenuItem("Lugu 1");
-        itemMusic1.setOnActivate(mp1::play);
+        itemMusic1.setOnActivate(() -> {
+            mp1.stop();
+            mp2.stop();
+            mp3.stop();
+            mp4.stop();
+            mp1.play();
+        });
 
         MenuItem itemMusic2 = new MenuItem("Lugu 2");
-        itemMusic2.setOnActivate(mp2::play);
+        itemMusic2.setOnActivate(() -> {
+            mp1.stop();
+            mp2.stop();
+            mp3.stop();
+            mp4.stop();
+            mp2.play();
+        });
 
         MenuItem itemMusic3 = new MenuItem("Lugu 3");
-        itemMusic3.setOnActivate(mp3::play);
+        itemMusic3.setOnActivate(() -> {
+            mp1.stop();
+            mp2.stop();
+            mp3.stop();
+            mp4.stop();
+            mp3.play();
+        });
 
         MenuItem itemMusic4 = new MenuItem("Lugu 4");
-        itemMusic4.setOnActivate(mp4::play);
-        
+        itemMusic4.setOnActivate(() -> {
+            mp1.stop();
+            mp2.stop();
+            mp3.stop();
+            mp4.stop();
+            mp4.play();
+        });
+
         MenuItem itemTagasi = new MenuItem("Tagasi");
         itemTagasi.setOnActivate(() -> {
             stage.setScene(scene1);

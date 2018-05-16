@@ -14,6 +14,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuItem;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -143,9 +144,9 @@ public class Menüü extends Application {
     private void LooSisu2() {
 
         StackPane root = new StackPane();
-        root.setPrefSize(900, 600);
+        root.setPrefSize(800, 600);
 
-        Rectangle bg = new Rectangle(900, 600);
+        Rectangle bg = new Rectangle(800, 600);
 
         root.heightProperty().addListener((observable, oldValue, newValue) -> {
             double y = newValue.doubleValue();
@@ -241,9 +242,9 @@ public class Menüü extends Application {
     private void LooSisu3() {
 
         StackPane root = new StackPane();
-        root.setPrefSize(900, 600);
+        root.setPrefSize(800, 600);
 
-        Rectangle bg = new Rectangle(900, 600);
+        Rectangle bg = new Rectangle(800, 600);
 
         root.heightProperty().addListener((observable, oldValue, newValue) -> {
             double y = newValue.doubleValue();
@@ -262,6 +263,7 @@ public class Menüü extends Application {
 
         MenuItem itemTagasi = new MenuItem("Tagasi");
         itemTagasi.setOnActivate(() -> {
+
             stage.setScene(scene1);
             currentItem = 0;
             menuBox = (VBox) scene1.getRoot().getChildrenUnmodifiable().filtered(n -> n instanceof VBox).get(0);
@@ -270,6 +272,8 @@ public class Menüü extends Application {
 
         menuBox = new VBox(20,
                 itemTagasi);
+
+
         menuBox.setAlignment(Pos.CENTER);
 
         getMenuItem(0).setActive(true);

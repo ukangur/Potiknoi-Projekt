@@ -37,8 +37,8 @@ public class Potiknoi {
         Küsimus küsimus = new Küsimus();
         String tasemeNimi = küsimus.MillineTase(Arrays.asList("lihtne", "keskmine"));
 
-        int tase = 0;
-        if (tasemeNimi == "lihtne") {
+        int tase;
+        if (Objects.equals(tasemeNimi, "lihtne")) {
             tase = 1;
         }
         else {
@@ -75,9 +75,9 @@ public class Potiknoi {
                     System.out.println(laualOlevadKaardid);                    //Prindin kaardid välja.
                     List<String> erinevadKäigud = Arrays.asList("käi juurde", "anna edasi");  //Küsin, mida mängija edasi tahab teha.
                     String millineKäik = küsimus.MillineKäik(erinevadKäigud);
-                    while (millineKäik == "käi juurde") {
+                    while (Objects.equals(millineKäik, "käi juurde")) {
                         millineKaart = küsimus.MillineKaart(inimeseKäes);
-                        if (laualOlevadKaardid.size() > 0 && millineKaart.getTugevus() == laualOlevadKaardid.get(0).getTugevus()) { //Kontrollin, kas kaart sobib
+                        if (laualOlevadKaardid.size() > 0 && Objects.equals(millineKaart.getTugevus(), laualOlevadKaardid.get(0).getTugevus())) { //Kontrollin, kas kaart sobib
                             mäng.setKaartLauale(millineKaart);                                                 //ehk kas laual on sama tugevusega (mitte mastiga) kaart
                             System.out.println(inimeseNimi + " käib kaardi: " + millineKaart);
                             inimene.eemaldaKäestKaart(millineKaart);
@@ -140,7 +140,7 @@ public class Potiknoi {
                     System.out.println(laualOlevadKaardid + "<-- Hetkel mängus olevad kaardid");
                     for (Kaart tapetav : laualOlevadKaardid) {   //Nüüd peab seda kaarti tapma. Siin on for-tsükkel, mis on valmis tulevikus ka mitut kaarti tapma.
                         String millineKäik = küsimus.MillineKäik(erinevadKäigud);
-                            if (millineKäik == "korja üles") {   //Kui käsk on "korja üles", siis mängija korjab kaardid üles
+                            if (Objects.equals(millineKäik, "korja üles")) {   //Kui käsk on "korja üles", siis mängija korjab kaardid üles
                                 inimene.võtaÜles(laualOlevadKaardid);
                                 inimene.võtaÜles(mäng.getTapvadKaardid());
                                 kesKäib = 0;    //for-tsükkel katkeb ning arvuti saab uuesti käia

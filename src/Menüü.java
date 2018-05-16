@@ -1,4 +1,3 @@
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -7,14 +6,10 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
 import javafx.application.Application;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.MenuItem;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -28,10 +23,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-
-import javax.swing.*;
 
 
 //menuitemi klassi sain netist
@@ -246,12 +239,15 @@ public class Menüü extends Application {
         scene2.setOnKeyPressed(getHandler(menuBox));
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     private void LooSisu3() {
 
         StackPane root = new StackPane();
         root.setPrefSize(800, 600);
 
         Rectangle bg = new Rectangle(800, 600);
+        Text kirjeldus = new Text("Igale mängijale jagatakse kuus kaarti. \n Ülejäänud kaartide seast tõmmatakse trump (kõige tugevam mast).\n Mängija, kellele käiakse, peab käidud kaardi ära tapma kas sama mastiga või trumbiga.\n Võidab see, kes kaartidest enne lahti saab.");
+kirjeldus.setFill(Color.WHITE);
 
         root.heightProperty().addListener((observable, oldValue, newValue) -> {
             double y = newValue.doubleValue();
@@ -270,23 +266,23 @@ public class Menüü extends Application {
 
         MenuItem itemTagasi = new MenuItem("Tagasi");
         itemTagasi.setOnActivate(() -> {
-
             stage.setScene(scene1);
             currentItem = 0;
             menuBox = (VBox) scene1.getRoot().getChildrenUnmodifiable().filtered(n -> n instanceof VBox).get(0);
             scene1.setOnKeyPressed(getHandler(menuBox));
         });
 
+        VBox vbox2 = new VBox();
+        vbox2.getChildren().addAll(kirjeldus);
         menuBox = new VBox(20,
                 itemTagasi);
-
-
+kirjeldus.setTextAlignment(TextAlignment.CENTER);
         menuBox.setAlignment(Pos.CENTER);
 
         getMenuItem(0).setActive(true);
+kirjeldus.setFont(Font.font("Arial",20));
 
-
-        root.getChildren().addAll(bg, menuBox);
+        root.getChildren().addAll(bg, menuBox,vbox2);
         StackPane.setAlignment(menuBox, Pos.CENTER);
 
         getHandler(menuBox);

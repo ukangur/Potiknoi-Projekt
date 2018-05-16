@@ -56,6 +56,7 @@ public class Menüü extends Application {
                 if (currentItem > 0) {
                     this.getMenuItem(currentItem).setActive(false);
                     this.getMenuItem(--currentItem).setActive(true);
+                    System.out.println("üles");
                 }
             }
 
@@ -63,12 +64,13 @@ public class Menüü extends Application {
                 if (currentItem < menuBox.getChildren().size() - 1) {
                     this.getMenuItem(currentItem).setActive(false);
                     this.getMenuItem(++currentItem).setActive(true);
-                    System.out.println("wololo");
+                    System.out.println("alla");
                 }
             }
 
             if (event.getCode() == KeyCode.ENTER) {
                 this.getMenuItem(currentItem).activate();
+                System.out.println("enter");
             }
 
         };
@@ -217,7 +219,7 @@ public class Menüü extends Application {
         MenuItem itemTagasi = new MenuItem("Tagasi");
         itemTagasi.setOnActivate(() -> {
             stage.setScene(scene1);
-            currentItem = 0;
+            currentItem = 1;
             menuBox = (VBox) scene1.getRoot().getChildrenUnmodifiable().filtered(n -> n instanceof VBox).get(0);
             scene1.setOnKeyPressed(getHandler(menuBox));
         });

@@ -75,7 +75,7 @@ public class Menüü extends Application {
         StackPane root = new StackPane();
         root.setPrefSize(800, 600);
 
-        InputStream pa = Files.newInputStream(Paths.get("C:\\Users\\Laptop\\Documents\\GitHub\\Potiknoi-Projekt\\src\\Taust.png"));
+        InputStream pa = Files.newInputStream(Paths.get("Taust.png"));
 
         Image img = new Image(pa);
         pa.close();

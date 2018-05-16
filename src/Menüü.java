@@ -138,6 +138,7 @@ public class Menüü extends Application {
         scene1.setOnKeyPressed(getHandler(menuBox));
     }
 
+
     private void LooSisu2() {
 
         StackPane root = new StackPane();
@@ -174,6 +175,7 @@ public class Menüü extends Application {
         Media menuMusic4 = new Media(new File("muusika4.mp3").toURI().toString());
         MediaPlayer mp4 = new MediaPlayer(menuMusic4);
         mp4.setCycleCount(MediaPlayer.INDEFINITE);
+
 
         MenuItem itemMusic1 = new MenuItem("Lugu 1");
         itemMusic1.setOnActivate(() -> {

@@ -165,21 +165,32 @@ public class Menüü extends Application {
         MediaPlayer mp1 = new MediaPlayer(menuMusic1);
         mp1.setCycleCount(MediaPlayer.INDEFINITE);
 
+        Media menuMusic2 = new Media(new File("muusika2.mp3").toURI().toString());
+        MediaPlayer mp2 = new MediaPlayer(menuMusic1);
+        mp2.setCycleCount(MediaPlayer.INDEFINITE);
+
+        Media menuMusic3 = new Media(new File("muusika3.mp3").toURI().toString());
+        MediaPlayer mp3 = new MediaPlayer(menuMusic1);
+        mp3.setCycleCount(MediaPlayer.INDEFINITE);
+
+        Media menuMusic4 = new Media(new File("muusika4.mp3").toURI().toString());
+        MediaPlayer mp4 = new MediaPlayer(menuMusic1);
+        mp4.setCycleCount(MediaPlayer.INDEFINITE);
 
         MenuItem itemMusic1 = new MenuItem("Lugu 1");
         itemMusic1.setOnActivate(mp1::play);
 
-        MenuItem itemPlay = new MenuItem("Lugu 2");
-        itemPlay.setOnActivate(() -> System.exit(0));
+        MenuItem itemMusic2 = new MenuItem("Lugu 2");
+        itemMusic2.setOnActivate(mp2::play);
 
-        MenuItem itemSettings = new MenuItem("Lugu 3");
-        itemSettings.setOnActivate(() -> System.exit(0));
+        MenuItem itemMusic3 = new MenuItem("Lugu 3");
+        itemMusic3.setOnActivate(mp3::play);
 
-        MenuItem itemMusic = new MenuItem("Lugu 4");
-        itemMusic.setOnActivate(() -> System.exit(0));
-
-        MenuItem itemInstruction = new MenuItem("Tagasi");
-        itemInstruction.setOnActivate(() -> {
+        MenuItem itemMusic4 = new MenuItem("Lugu 4");
+        itemMusic4.setOnActivate(mp4::play);
+        
+        MenuItem itemTagasi = new MenuItem("Tagasi");
+        itemTagasi.setOnActivate(() -> {
             stage.setScene(scene1);
             currentItem = 0;
             menuBox = (VBox) scene1.getRoot().getChildrenUnmodifiable().filtered(n -> n instanceof VBox).get(0);
@@ -188,10 +199,10 @@ public class Menüü extends Application {
 
         menuBox = new VBox(20,
                 itemMusic1,
-                itemPlay,
-                itemSettings,
-                itemMusic,
-                itemInstruction);
+                itemMusic2,
+                itemMusic3,
+                itemMusic4,
+                itemTagasi);
         menuBox.setAlignment(Pos.CENTER);
 
         getMenuItem(currentItem).setActive(true);

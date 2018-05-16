@@ -69,8 +69,9 @@ public class Menüü extends Application {
             }
 
             if (event.getCode() == KeyCode.ENTER) {
+                this.getMenuItem(currentItem).setActive(false);
                 this.getMenuItem(currentItem).activate();
-                System.out.println("enter");
+                this.getMenuItem(0).setActive(true);
             }
 
         };
@@ -187,6 +188,7 @@ public class Menüü extends Application {
             mp3.stop();
             mp4.stop();
             mp1.play();
+            currentItem = 0;
         });
 
         MenuItem itemMusic2 = new MenuItem("Lugu 2");
@@ -196,6 +198,7 @@ public class Menüü extends Application {
             mp3.stop();
             mp4.stop();
             mp2.play();
+            currentItem = 0;
         });
 
         MenuItem itemMusic3 = new MenuItem("Lugu 3");
@@ -205,6 +208,7 @@ public class Menüü extends Application {
             mp3.stop();
             mp4.stop();
             mp3.play();
+            currentItem = 0;
         });
 
         MenuItem itemMusic4 = new MenuItem("Lugu 4");
@@ -214,12 +218,13 @@ public class Menüü extends Application {
             mp3.stop();
             mp4.stop();
             mp4.play();
+            currentItem = 0;
         });
 
         MenuItem itemTagasi = new MenuItem("Tagasi");
         itemTagasi.setOnActivate(() -> {
             stage.setScene(scene1);
-            currentItem = 1;
+            currentItem = 0;
             menuBox = (VBox) scene1.getRoot().getChildrenUnmodifiable().filtered(n -> n instanceof VBox).get(0);
             scene1.setOnKeyPressed(getHandler(menuBox));
         });

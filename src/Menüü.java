@@ -166,15 +166,15 @@ public class Menüü extends Application {
         mp1.setCycleCount(MediaPlayer.INDEFINITE);
 
         Media menuMusic2 = new Media(new File("muusika2.mp3").toURI().toString());
-        MediaPlayer mp2 = new MediaPlayer(menuMusic1);
+        MediaPlayer mp2 = new MediaPlayer(menuMusic2);
         mp2.setCycleCount(MediaPlayer.INDEFINITE);
 
         Media menuMusic3 = new Media(new File("muusika3.mp3").toURI().toString());
-        MediaPlayer mp3 = new MediaPlayer(menuMusic1);
+        MediaPlayer mp3 = new MediaPlayer(menuMusic3);
         mp3.setCycleCount(MediaPlayer.INDEFINITE);
 
         Media menuMusic4 = new Media(new File("muusika4.mp3").toURI().toString());
-        MediaPlayer mp4 = new MediaPlayer(menuMusic1);
+        MediaPlayer mp4 = new MediaPlayer(menuMusic4);
         mp4.setCycleCount(MediaPlayer.INDEFINITE);
 
         MenuItem itemMusic1 = new MenuItem("Lugu 1");

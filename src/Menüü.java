@@ -336,9 +336,6 @@ kirjeldus.setFont(Font.font("Arial",20));
 
         Console konsool = new Console();
 
-        Scanner u = new Scanner(System.in);
-        konsool.print(u.toString());
-        konsool.loe("a");
 
         root.getChildren().addAll(bg,konsool,mang );
 

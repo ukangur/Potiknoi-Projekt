@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.InputStream;
+import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.Executors;
@@ -10,6 +11,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -25,6 +27,8 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+
+import javax.swing.*;
 
 
 //menuitemi klassi sain netist
@@ -50,7 +54,6 @@ public class Menüü extends Application {
                 if (currentItem > 0) {
                     this.getMenuItem(currentItem).setActive(false);
                     this.getMenuItem(--currentItem).setActive(true);
-                    System.out.println("üles");
                 }
             }
 
@@ -58,7 +61,6 @@ public class Menüü extends Application {
                 if (currentItem < menuBox.getChildren().size() - 1) {
                     this.getMenuItem(currentItem).setActive(false);
                     this.getMenuItem(++currentItem).setActive(true);
-                    System.out.println("alla");
                 }
             }
 
@@ -70,6 +72,8 @@ public class Menüü extends Application {
 
         };
     }
+
+
 
     private void LooSisu() throws Exception {
         currentItem = 0;
@@ -89,8 +93,11 @@ public class Menüü extends Application {
         MenuItem itemExit = new MenuItem("Välju Mängust");
         itemExit.setOnActivate(() -> System.exit(0));
 
+        LooSisu4();
+
         MenuItem itemPlay = new MenuItem("Mängima");
-        itemPlay.setOnActivate(() -> stage.setScene(scene4));
+        itemPlay.setOnActivate(() -> {stage.setScene(scene4);});
+
 
         MenuItem itemMusic = new MenuItem("Muusika");
         itemMusic.setOnActivate(() -> {
@@ -157,7 +164,6 @@ public class Menüü extends Application {
         root.widthProperty().addListener((observable, oldValue, newValue) -> {
             double x = newValue.doubleValue();
             bg.setWidth(x);
-
         });
 
         Media menuMusic1 = new Media(new File("muusika1.mp3").toURI().toString());
@@ -315,10 +321,12 @@ kirjeldus.setFont(Font.font("Arial",20));
 
         });
 
+        Console konsool = new Console();
 
-        root.getChildren().addAll(bg);
+        root.getChildren().addAll(bg,konsool);
 
         scene4 = new Scene(root);
+
     }
 
     private MenuItem getMenuItem(int index) {
@@ -373,15 +381,14 @@ kirjeldus.setFont(Font.font("Arial",20));
     public void start(Stage primaryStage) throws Exception {
         LooSisu2();
         LooSisu3();
-        LooSisu4();
         LooSisu();
-
         this.stage = primaryStage;
 
         primaryStage.setScene(scene1);
         primaryStage.setOnCloseRequest(event -> bgThread.shutdownNow());
 
         primaryStage.show();
+
     }
 
     public static void main(String[] args) {

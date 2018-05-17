@@ -3,6 +3,7 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Scanner;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
@@ -335,7 +336,11 @@ kirjeldus.setFont(Font.font("Arial",20));
 
         Console konsool = new Console();
 
-        root.getChildren().addAll(bg,konsool, mang);
+        Scanner u = new Scanner(System.in);
+        konsool.print(u.toString());
+        konsool.loe("a");
+
+        root.getChildren().addAll(bg,konsool,mang );
 
         scene4 = new Scene(root);
 

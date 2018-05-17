@@ -3,7 +3,9 @@ import java.util.Scanner;
 
 public class Küsimus {
 
+
     private Scanner sc = new Scanner(System.in);
+
 
     // Sisestatakse kaartide list ja meetod annab igale kaardile järjekorra numbri
     // Siis küsitakse mängijalt, millist kaarti ta nendest sooib kasutada ja valiku numbri

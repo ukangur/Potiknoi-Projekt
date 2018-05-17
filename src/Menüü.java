@@ -7,10 +7,12 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
@@ -321,9 +323,19 @@ kirjeldus.setFont(Font.font("Arial",20));
 
         });
 
+        Button mang = new Button();
+
+        mang.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Potiknoi mäng = new Potiknoi();
+                mäng.mängTööle();
+            }
+        });
+
         Console konsool = new Console();
 
-        root.getChildren().addAll(bg,konsool);
+        root.getChildren().addAll(bg,konsool, mang);
 
         scene4 = new Scene(root);
 
